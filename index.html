@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة الارتقاء المهني والتعلم الحر | علم ينفع</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts (Tajawal) -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        /* Custom Scrollbar for better UX */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Glassmorphism effects */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .tab-active {
+            background-color: #0f172a !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 14px 0 rgba(15, 23, 42, 0.2);
+        }
+    </style>
+</head>
+<body class="text-slate-800 flex flex-col min-h-screen">
+
+    <!-- Top Premium Header Banner -->
+    <header class="relative bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white py-16 px-6 overflow-hidden shadow-2xl">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-indigo-500 to-transparent"></div>
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-300 mb-4 border border-indigo-500/30">
+                <i class="fas fa-graduation-cap"></i> مبادرة قناة علم ينفع التعليمية
+            </span>
+            <h1 class="text-3xl md:text-5xl font-black mb-4 tracking-tight leading-tight">بوابة الارتقاء المهني والتمويل الذاتي</h1>
+            <p class="text-base md:text-xl font-light text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                مجموعتك المتكاملة لاحتراف الإكسل، استكشاف الشهادات المهنية العالمية، وتعلم كيفية دراستها مجاناً واسترداد رسومها بالكامل عبر دعم صندوق "هدف".
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Navigation Bar -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm overflow-x-auto whitespace-nowrap">
+        <div class="max-w-6xl mx-auto px-4 flex justify-start md:justify-center gap-2 py-3">
+            <button onclick="switchSection('welcome')" id="nav-welcome" class="nav-tab px-5 py-2.5 rounded-xl font-bold text-sm text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 tab-active">
+                <i class="fas fa-home"></i> الرئيسية
+            </button>
+            <button onclick="switchSection('excel')" id="nav-excel" class="nav-tab px-5 py-2.5 rounded-xl font-bold text-sm text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2">
+                <i class="fas fa-file-excel text-emerald-600"></i> دليل الإكسل
+            </button>
+            <button onclick="switchSection('certs')" id="nav-certs" class="nav-tab px-5 py-2.5 rounded-xl font-bold text-sm text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2">
+                <i class="fas fa-award text-amber-500"></i> دليل 500+ شهادة
+            </button>
+            <button onclick="switchSection('hrdf')" id="nav-hrdf" class="nav-tab px-5 py-2.5 rounded-xl font-bold text-sm text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2">
+                <i class="fas fa-credit-card text-blue-500"></i> دليل تعويض "هدف"
+            </button>
+            <button onclick="switchSection('google')" id="nav-google" class="nav-tab px-5 py-2.5 rounded-xl font-bold text-sm text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2">
+                <i class="fab fa-google text-red-500"></i> شهادات جوجل المجانية
+            </button>
+        </div>
+    </nav>
+
+    <!-- Content Sections Container -->
+    <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
+
+        <!-- SECTION 1: WELCOME/DASHBOARD -->
+        <section id="sec-welcome" class="section-content space-y-8 animate-fade-in">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Welcome Stat Cards -->
+                <div class="glass-card rounded-2xl p-6 flex items-center gap-4 border-r-4 border-r-emerald-500">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl shrink-0"><i class="fas fa-calculator"></i></div>
+                    <div>
+                        <div class="text-xs text-slate-400 font-medium">دروس إكسل التفاعلية</div>
+                        <div class="text-lg font-bold text-slate-800">3 مستويات رئيسية</div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-6 flex items-center gap-4 border-r-4 border-r-amber-500">
+                    <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl shrink-0"><i class="fas fa-graduation-cap"></i></div>
+                    <div>
+                        <div class="text-xs text-slate-400 font-medium">الشهادات المهنية بالدليل</div>
+                        <div class="text-lg font-bold text-slate-800">أكثر من 500 شهادة</div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-6 flex items-center gap-4 border-r-4 border-r-blue-500">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl shrink-0"><i class="fas fa-hand-holding-dollar"></i></div>
+                    <div>
+                        <div class="text-xs text-slate-400 font-medium">دعم واسترداد الرسوم</div>
+                        <div class="text-lg font-bold text-slate-800">تعويض مالي 100%</div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-6 flex items-center gap-4 border-r-4 border-r-red-500">
+                    <div class="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center text-xl shrink-0"><i class="fab fa-google"></i></div>
+                    <div>
+                        <div class="text-xs text-slate-400 font-medium">مبادرة جوجل المهنية</div>
+                        <div class="text-lg font-bold text-slate-800">9 مسارات متكاملة</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Intro Highlight Card -->
+            <div class="bg-gradient-to-br from-indigo-50 to-slate-50 border border-indigo-100 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-8 shadow-sm">
+                <div class="md:w-2/3">
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-indigo-950 mb-3">ابدأ رحلة تحوّلك المهني والمالي اليوم!</h2>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        لقد صممنا لك هذه المنصة لتكون مرجعك الدائم والذكي للحصول على أفضل المهارات والشهادات الاحترافية المعترف بها في سوق العمل السعودي والخليجي مع طريقة استعادة رسومها بالكامل بطريقة شرعية وآمنة.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <button onclick="switchSection('excel')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-5 py-2.5 rounded-xl transition-all shadow-md text-sm">
+                            تصفح دليل الإكسل <i class="fas fa-arrow-left mr-1.5"></i>
+                        </button>
+                        <button onclick="switchSection('google')" class="bg-white hover:bg-slate-100 text-indigo-600 border border-indigo-200 font-bold px-5 py-2.5 rounded-xl transition-all text-sm">
+                            احصل على كورس جوجل مجاناً <i class="fas fa-magic mr-1.5"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/3 flex justify-center">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500' width='220'><circle cx='250' cy='250' r='200' fill='%236366f1' opacity='0.1'/><path d='M150 150h200v200H150z' fill='none' stroke='%236366f1' stroke-width='10' stroke-linejoin='round'/><circle cx='250' cy='250' r='50' fill='%236366f1'/></svg>" class="w-48 h-48 animate-pulse" alt="Logo">
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: EXCEL GUIDE -->
+        <section id="sec-excel" class="section-content hidden space-y-8 animate-fade-in">
+            <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-200 pb-4 gap-4">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-800"><i class="fas fa-file-excel text-emerald-600 ml-2"></i>الدليل التفاعلي لاحتراف الإكسل</h2>
+                    <p class="text-slate-500 text-sm mt-1">تعلّم الإكسل بطرق تفاعلية وعملية مقسمة لثلاثة مستويات تدريجية.</p>
+                </div>
+                <!-- Excel level switcher -->
+                <div class="inline-flex bg-slate-100 p-1.5 rounded-2xl">
+                    <button onclick="switchExcelLevel('basic')" id="btn-ex-basic" class="excel-level-btn px-4 py-2 rounded-xl text-xs font-bold text-emerald-700 bg-white shadow-sm transition-all">مبتدئ</button>
+                    <button onclick="switchExcelLevel('intermediate')" id="btn-ex-intermediate" class="excel-level-btn px-4 py-2 rounded-xl text-xs font-bold text-slate-600 transition-all">متوسط</button>
+                    <button onclick="switchExcelLevel('advanced')" id="btn-ex-advanced" class="excel-level-btn px-4 py-2 rounded-xl text-xs font-bold text-slate-600 transition-all">متقدم</button>
+                </div>
+            </div>
+
+            <!-- EXCEL LEVEL: BASIC -->
+            <div id="ex-level-basic" class="excel-tab-content grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-emerald-500 flex flex-col justify-between">
+                    <div>
+                        <span class="bg-emerald-50 text-emerald-700 text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">الأساسيات الأولى</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-3 mb-2">واجهة البرنامج والخلايا</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">تعرف على كيفية ضبط وحفظ الخلايا، ضبط الأعمدة والصفوف لبدء عمل منظم خالي من المشاكل التنسيقية.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <a href="https://www.youtube.com/results?search_query=%D8%B4%D8%B1%D8%AD+%D9%88%D8%A7%D8%AC%D9%87%D8%A9+%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC+%D8%A7%D9%83%D8%B3%D9%84" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-red-50 text-red-700 hover:bg-red-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fab fa-youtube ml-2"></i>شرح مرئي يوتيوب
+                        </a>
+                        <a href="https://support.microsoft.com/ar-sa/office/basic-tasks-in-excel-ec3aa2de-f480-4a39-bd20-6bc718521a2c" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fas fa-book-open ml-2"></i>الدليل المكتوب (رسمي)
+                        </a>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-emerald-500 flex flex-col justify-between">
+                    <div>
+                        <span class="bg-emerald-50 text-emerald-700 text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">العمليات الأساسية</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-3 mb-2">الصيغ والدوال الرياضية البسيطة</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">تعلم وتدرب على الجمع التلقائي (AutoSum)، الطرح، الضرب والقسمة ودمجها بفعالية لحساب قيم فواتيرك.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <a href="https://www.youtube.com/results?search_query=%D8%B4%D8%B1%D8%AD+%D8%A7%D9%84%D8%B5%D9%8A%D8%BA+%D9%88%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D9%84+%D8%A7%D9%84%D8%A7%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9+%D9%81%D9%8A+%D8%A7%D9%84%D8%A7%D9%83%D8%B3%D9%84" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-red-50 text-red-700 hover:bg-red-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fab fa-youtube ml-2"></i>شرح مرئي يوتيوب
+                        </a>
+                        <a href="https://support.microsoft.com/ar-sa/office/formulas-and-functions-29478ad0-b7c2-4a3b-9a84-090d8a579dfb" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fas fa-book-open ml-2"></i>الدليل المكتوب (رسمي)
+                        </a>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-emerald-500 flex flex-col justify-between">
+                    <div>
+                        <span class="bg-emerald-50 text-emerald-700 text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">التنسيق البصري</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-3 mb-2">تنسيق الخلايا والعملات</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">احترف إظهار الأرقام كنسب مئوية أو قيم نقدية بالعملة المحلية وتعديل الخطوط والحدود للحصول على تقرير مرتب بامتياز.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <a href="https://www.youtube.com/results?search_query=%D8%B4%D8%B1%D8%AD+%D8%AA%D9%86%D8%B3%D9%8A%D9%82+%D8%A7%D9%84%DAE%D9%84%D8%A7%D9%8A%D8%A7+%D9%88%D8%A7%D9%84%D8%A7%D8%B1%D9%82%D8%A7%D9%85+%D9%81%D9%8A+%D8%A7%D9%84%D8%A7%D9%83%D8%B3%D9%84" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-red-50 text-red-700 hover:bg-red-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fab fa-youtube ml-2"></i>شرح مرئي يوتيوب
+                        </a>
+                        <a href="https://support.microsoft.com/ar-sa/office/format-numbers-as-dates-or-currencies-9fa99173-1994-4632-b7b5-0818d6e3fb24" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fas fa-book-open ml-2"></i>الدليل المكتوب (رسمي)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXCEL LEVEL: INTERMEDIATE -->
+            <div id="ex-level-intermediate" class="excel-tab-content hidden grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-blue-500 flex flex-col justify-between">
+                    <div>
+                        <span class="bg-blue-50 text-blue-700 text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">أهم الدوال</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-3 mb-2">دالة البحث الرأسي VLOOKUP</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">الأداة الأكثر استخداماً للربط بين بيانات الجداول المختلفة بناء على مفتاح بحث واحد وبشكل سريع وتلقائي.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <a href="https://www.youtube.com/results?search_query=%D8%B4%D8%B1%D8%AD+%D8%AF%D8%A7%D9%84%D8%A9+vlookup+%D9%81%D9%8A+%D8%A7%D9%84%D8%A7%D9%83%D8%B3%D9%84" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-red-50 text-red-700 hover:bg-red-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fab fa-youtube ml-2"></i>شرح مرئي يوتيوب
+                        </a>
+                        <a href="https://support.microsoft.com/ar-sa/office/vlookup-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fas fa-book-open ml-2"></i>الدليل المكتوب (رسمي)
+                        </a>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-blue-500 flex flex-col justify-between">
+                    <div>
+                        <span class="bg-blue-50 text-blue-700 text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">تحليل البيانات</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-3 mb-2">الجداول المحورية Pivot Tables</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">أقوى سلاح لتلخيص وتجميع ملايين القيود والصفوف بنقرة زر لعرض تقارير دورية متكاملة تهم متخذي القرار.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <a href="https://www.youtube.com/results?search_query=%D8%B4%D8%B1%D8%AD+%D8%A7%D9%84%D8%AC%D8%AF%D8%A7%D9%88%D9%84+%D8%A7%D9%84%D9%85%D8%AF%D9%88%D8%B1%D9%8A%D8%A9+pivot+tables" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-red-50 text-red-700 hover:bg-red-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fab fa-youtube ml-2"></i>شرح مرئي يوتيوب
+                        </a>
+                        <a href="https://support.microsoft.com/ar-sa/office/create-a-pivottable-to-analyze-worksheet-data-a9a84538-bfe9-40a9-a8e9-f99134456576" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fas fa-book-open ml-2"></i>الدليل المكتوب (رسمي)
+                        </a>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-blue-500 flex flex-col justify-between">
+                    <div>
+                        <span class="bg-blue-50 text-blue-700 text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">التنسيق الشرطي</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-3 mb-2">التنسيق الشرطي التلقائي</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">تلوين وتمييز قيم الخلايا وتدقيقها آلياً لتظهر الفروقات السلبية أو الإيجابية والأرباح بمجرد تغير القيمة الرياضية.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <a href="https://www.youtube.com/results?search_query=%D8%B4%D8%B1%D8%AD+%D8%A7%D9%84%D8%AA%D9%86%D8%B3%D9%8A%D9%82+%D8%A7%D9%84%D8%B4%D8%B1%D8%B7%D9%8A+%D9%81%D9%8I+%D8%A7%D9%84%D8%A7%D9%83%D8%B3%D9%84" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-red-50 text-red-700 hover:bg-red-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fab fa-youtube ml-2"></i>شرح مرئي يوتيوب
+                        </a>
+                        <a href="https://support.microsoft.com/ar-sa/office/use-conditional-formatting-to-highlight-information-fed60dfa-1d3f-4e13-9ecb-f1d471cdf59d" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fas fa-book-open ml-2"></i>الدليل المكتوب (رسمي)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXCEL LEVEL: ADVANCED -->
+            <div id="ex-level-advanced" class="excel-tab-content hidden grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-purple-500 flex flex-col justify-between">
+                    <div>
+                        <span class="bg-purple-50 text-purple-700 text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">هندسة البيانات</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-3 mb-2">أداة الـ Power Query</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">أداة تنظيف وتحويل وفرز البيانات من مختلف المصادر والملفات بكفاءة متناهية ودون كتابة أي تعليمات برمجية معقدة.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <a href="https://www.youtube.com/results?search_query=%D8%B4%D8%B1%D8%AD+power+query+excel+%D8%A8%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-red-50 text-red-700 hover:bg-red-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fab fa-youtube ml-2"></i>شرح مرئي يوتيوب
+                        </a>
+                        <a href="https://support.microsoft.com/ar-sa/office/about-power-query-in-excel-7104fbee-9e62-4cb9-a02e-5a11951369b5" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-purple-50 text-purple-700 hover:bg-purple-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fas fa-book-open ml-2"></i>الدليل المكتوب (رسمي)
+                        </a>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-purple-500 flex flex-col justify-between">
+                    <div>
+                        <span class="bg-purple-50 text-purple-700 text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">التطوير والأتمتة</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-3 mb-2">تسجيل وبرمجة الماكرو VBA</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">أتمت مئات العمليات المكررة اليومية واكتب أكواد برمجية مخصصة وموجهة ليعمل البرنامج بدلاً منك بضغطة زر وحيدة.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <a href="https://www.youtube.com/results?search_query=%D8%B4%D8%B1%D8%AD+macro+vba+excel+%D8%A8%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-red-50 text-red-700 hover:bg-red-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fab fa-youtube ml-2"></i>شرح مرئي يوتيوب
+                        </a>
+                        <a href="https://support.microsoft.com/ar-sa/office/quick-start-create-a-macro-974ef220-f716-4e01-b015-3ea70e64937b" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-purple-50 text-purple-700 hover:bg-purple-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fas fa-book-open ml-2"></i>الدليل المكتوب (رسمي)
+                        </a>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-purple-500 flex flex-col justify-between">
+                    <div>
+                        <span class="bg-purple-50 text-purple-700 text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">لوحات القيادة</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-3 mb-2">قوالب لوحات البيانات Dashboards</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">تنزيل قوالب وتصاميم ومخططات جاهزة للعمل المالي والشخصي والتطوير الإداري المباشر والمجاني.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <a href="https://www.youtube.com/results?search_query=%D8%AA%D8%B5%D9%85%D9%8A%D9%85+dashboard+excel+%D8%A8%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8I" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-red-50 text-red-700 hover:bg-red-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fab fa-youtube ml-2"></i>شرح مرئي يوتيوب
+                        </a>
+                        <a href="https://templates.office.com/ar-sa/templates-for-excel" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-purple-50 text-purple-700 hover:bg-purple-600 hover:text-white font-bold py-2.5 px-4 rounded-xl transition-all text-xs">
+                            <i class="fas fa-file-download ml-2"></i>تنزيل قوالب معتمدة
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: PROFESSIONAL CERTS (500+ DRAFT) -->
+        <section id="sec-certs" class="section-content hidden space-y-8 animate-fade-in">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-800"><i class="fas fa-award text-amber-500 ml-2"></i>مستكشف دليل الشهادات الاحترافية</h2>
+                <p class="text-slate-500 text-sm mt-1">تصفح أبرز الشهادات المعتمدة من بين 500+ شهادة في دليل التخصصات المهنية.</p>
+            </div>
+
+            <!-- Custom Category Filters -->
+            <div class="flex flex-wrap gap-2">
+                <button onclick="filterCerts('all')" class="cert-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-amber-500 text-white shadow-sm transition-all">كل الشهادات</button>
+                <button onclick="filterCerts('it')" class="cert-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">تقنية المعلومات والأمن السيبراني</button>
+                <button onclick="filterCerts('mgmt')" class="cert-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">الإدارة والجودة</button>
+                <button onclick="filterCerts('finance')" class="cert-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">المالية والمحاسبة</button>
+                <button onclick="filterCerts('hr')" class="cert-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">الموارد البشرية والتدريب</button>
+            </div>
+
+            <!-- Certs Grid -->
+            <div id="certs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cert 1 (IT) -->
+                <div class="cert-card glass-card rounded-2xl p-6 border-r-4 border-r-indigo-500 flex flex-col justify-between" data-category="it">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-indigo-600 text-[10px] font-bold px-2 py-1 rounded bg-indigo-50">تقنية وأمن</span>
+                            <span class="text-xs text-slate-400 font-bold">مستوى: متوسط</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">محلل أمن معلومات معتمد CCNA</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">الشهادة الأساسية من سيسكو لبناء وتأمين الشبكات السلكية واللاسلكية ومعالجة البيانات الأساسية بشكل آمن.</p>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-xl text-xs text-slate-500 flex justify-between items-center mt-4">
+                        <span>التعويض عبر هدف: <strong>مدعومة</strong></span>
+                        <i class="fas fa-check-circle text-emerald-500"></i>
+                    </div>
+                </div>
+                <!-- Cert 2 (IT) -->
+                <div class="cert-card glass-card rounded-2xl p-6 border-r-4 border-r-indigo-500 flex flex-col justify-between" data-category="it">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-indigo-600 text-[10px] font-bold px-2 py-1 rounded bg-indigo-50">تقنية وأمن</span>
+                            <span class="text-xs text-slate-400 font-bold">مستوى: احترافي</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">مدير أمن معلومات معتمد CISM</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">الشهادة القيادية الأبرز في حوكمة وإدارة الأنظمة وحماية البنى التحتية للمؤسسات والشركات الكبرى.</p>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-xl text-xs text-slate-500 flex justify-between items-center mt-4">
+                        <span>التعويض عبر هدف: <strong>مدعومة</strong></span>
+                        <i class="fas fa-check-circle text-emerald-500"></i>
+                    </div>
+                </div>
+                <!-- Cert 3 (MGMT) -->
+                <div class="cert-card glass-card rounded-2xl p-6 border-r-4 border-r-amber-500 flex flex-col justify-between" data-category="mgmt">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-amber-600 text-[10px] font-bold px-2 py-1 rounded bg-amber-50">إدارة مشاريع</span>
+                            <span class="text-xs text-slate-400 font-bold">مستوى: متقدم</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">محترف إدارة المشاريع PMP</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">أشهر وأقوى شهادة على الإطلاق لإتقان إدارة المشروعات وتنظيم الفرق الميدانية بكفاءة واحترافية.</p>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-xl text-xs text-slate-500 flex justify-between items-center mt-4">
+                        <span>التعويض عبر هدف: <strong>مدعومة</strong></span>
+                        <i class="fas fa-check-circle text-emerald-500"></i>
+                    </div>
+                </div>
+                <!-- Cert 4 (MGMT) -->
+                <div class="cert-card glass-card rounded-2xl p-6 border-r-4 border-r-amber-500 flex flex-col justify-between" data-category="mgmt">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-amber-600 text-[10px] font-bold px-2 py-1 rounded bg-amber-50">جودة وتطوير</span>
+                            <span class="text-xs text-slate-400 font-bold">مستوى: احترافي</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">حزام ليدر الـ Six Sigma الأخضر</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">تمكنك من تحسين العمليات الداخلية والتقليل من مستويات الأخطاء وزيادة الرقابة الفعالة على مخرجات العمل.</p>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-xl text-xs text-slate-500 flex justify-between items-center mt-4">
+                        <span>التعويض عبر هدف: <strong>مدعومة</strong></span>
+                        <i class="fas fa-check-circle text-emerald-500"></i>
+                    </div>
+                </div>
+                <!-- Cert 5 (Finance) -->
+                <div class="cert-card glass-card rounded-2xl p-6 border-r-4 border-r-emerald-500 flex flex-col justify-between" data-category="finance">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-emerald-600 text-[10px] font-bold px-2 py-1 rounded bg-emerald-50">مالية ومحاسبة</span>
+                            <span class="text-xs text-slate-400 font-bold">مستوى: متقدم</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">المحاسب القانوني المعتمد CPA</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">الاعتماد المهني الأعلى للمحاسبين لتدقيق ومراقبة الحسابات المالية وإدارة السياسات الضريبية بكفاءة.</p>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-xl text-xs text-slate-500 flex justify-between items-center mt-4">
+                        <span>التعويض عبر هدف: <strong>مدعومة</strong></span>
+                        <i class="fas fa-check-circle text-emerald-500"></i>
+                    </div>
+                </div>
+                <!-- Cert 6 (HR) -->
+                <div class="cert-card glass-card rounded-2xl p-6 border-r-4 border-r-blue-500 flex flex-col justify-between" data-category="hr">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-blue-600 text-[10px] font-bold px-2 py-1 rounded bg-blue-50">موارد بشرية</span>
+                            <span class="text-xs text-slate-400 font-bold">مستوى: متوسط</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">أخصائي موارد بشرية محترف SHRM-CP</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">تمنحك المهارات الأساسية لإدارة الطاقات البشرية، التوظيف الذكي، والترقيات الوظيفية بالمعايير العالمية.</p>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-xl text-xs text-slate-500 flex justify-between items-center mt-4">
+                        <span>التعويض عبر هدف: <strong>مدعومة</strong></span>
+                        <i class="fas fa-check-circle text-emerald-500"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PDF Manual Info Alert -->
+            <div class="bg-blue-50 border border-blue-200 rounded-2xl p-5 flex items-start gap-4">
+                <i class="fas fa-info-circle text-blue-600 text-xl mt-0.5 shrink-0"></i>
+                <div class="text-xs md:text-sm text-blue-800 leading-relaxed">
+                    <strong>تنويه هام من قناة علم ينفع:</strong> تم استخلاص هذه الشهادات من "دليل الشهادات الاحترافية للتخصصات المهنية (النسخة الثانية)" المرفق كـ PDF بقناتنا في تيليجرام. تفضل بالرجوع للملف المرفق لرؤية شروط وتفاصيل كل شهادة من الشهادات الـ 500 كاملة!
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: HADAF SUPPORT (صندوق هدف) -->
+        <section id="sec-hrdf" class="section-content hidden space-y-8 animate-fade-in">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-800"><i class="fas fa-credit-card text-blue-500 ml-2"></i>خطوات استرداد رسوم الشهادات من "هدف"</h2>
+                <p class="text-slate-500 text-sm mt-1">خرائط تفاعلية توضح بالتفصيل كيف تجعل صندوق الموارد البشرية يعوضك ماليًا 100%.</p>
+            </div>
+
+            <!-- Steps Roadmap Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+                <!-- Step 1 -->
+                <div class="glass-card rounded-2xl p-6 relative border-t-4 border-t-indigo-600">
+                    <div class="absolute -top-4 right-6 w-8 h-8 rounded-full bg-indigo-600 text-white font-extrabold flex items-center justify-center shadow-md">1</div>
+                    <h3 class="text-lg font-bold text-indigo-950 mt-2 mb-2">التأكد والاجتياز</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">تأكد أولاً أن شهادتك معتمدة بالدليل، احضر الاختبار، واجتزه بنجاح للحصول على الوثيقة الرسمية.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="glass-card rounded-2xl p-6 relative border-t-4 border-t-indigo-600">
+                    <div class="absolute -top-4 right-6 w-8 h-8 rounded-full bg-indigo-600 text-white font-extrabold flex items-center justify-center shadow-md">2</div>
+                    <h3 class="text-lg font-bold text-indigo-950 mt-2 mb-2">تسجيل الدخول بقناة هدف</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">ادخل على بوابة الأفراد في "طاقات" عبر النفاذ الوطني الموحد، ثم توجه لقائمة "برامجنا".</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="glass-card rounded-2xl p-6 relative border-t-4 border-t-indigo-600">
+                    <div class="absolute -top-4 right-6 w-8 h-8 rounded-full bg-indigo-600 text-white font-extrabold flex items-center justify-center shadow-md">3</div>
+                    <h3 class="text-lg font-bold text-indigo-950 mt-2 mb-2">إرسال طلب التعويض</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">اختر برنامج (الشهادات الاحترافية)، عبئ النموذج الإلكتروني وأرفق فاتورة الدفع وصورة الشهادة المكتسبة.</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="glass-card rounded-2xl p-6 relative border-t-4 border-t-indigo-600">
+                    <div class="absolute -top-4 right-6 w-8 h-8 rounded-full bg-indigo-600 text-white font-extrabold flex items-center justify-center shadow-md">4</div>
+                    <h3 class="text-lg font-bold text-indigo-950 mt-2 mb-2">الحصول على التعويض</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">سيتم مراجعة طلبك وإيداع مبالغ الرسوم كاملة والتدريب الداعم في حسابك البنكي الآيبان مباشرة!</p>
+                </div>
+            </div>
+
+            <!-- Eligibility Requirements -->
+            <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200">
+                <h3 class="text-xl font-bold text-slate-800 mb-4"><i class="fas fa-clipboard-list text-indigo-600 ml-2"></i>شروط وضوابط الحصول على التعويض المالي</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-check-circle text-emerald-500 text-lg mt-0.5"></i>
+                        <p class="text-slate-600 text-sm">أن يكون المتقدم مواطناً أو مواطنة يحمل الهوية الوطنية السعودية.</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-check-circle text-emerald-500 text-lg mt-0.5"></i>
+                        <p class="text-slate-600 text-sm">أن تكون الشهادة ضمن قائمة الشهادات المعتمدة من صندوق "هدف" وقت الاختبار.</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-check-circle text-emerald-500 text-lg mt-0.5"></i>
+                        <p class="text-slate-600 text-sm">ألا يتجاوز تاريخ الحصول على الشهادة الحد المسموح به لرفع الطلب (90 يوماً كحد أقصى).</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-check-circle text-emerald-500 text-lg mt-0.5"></i>
+                        <p class="text-slate-600 text-sm">رفع الفواتير والملفات الثبوتية الصحيحة باسم المتقدم المستفيد.</p>
+                    </div>
+                </div>
+                <!-- Official Link Button -->
+                <div class="mt-8 text-center">
+                    <a href="https://www.hrdf.org.sa/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all text-sm">
+                        <i class="fas fa-external-link-alt"></i> البوابة الرسمية لصندوق تنمية الموارد البشرية (هدف)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: GOOGLE FREE COURSES & FINANCIAL AID GENERATOR -->
+        <section id="sec-google" class="section-content hidden space-y-8 animate-fade-in">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-800"><i class="fab fa-google text-red-500 ml-2"></i>شهادات جوجل المهنية الاحترافية المعتمدة</h2>
+                <p class="text-slate-500 text-sm mt-1">تعرف على البرامج والسر المهني لطلب التعويض المالي والدراسة المجانية عبر كورسيرا.</p>
+            </div>
+
+            <!-- List of 9 Courses -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Course 1 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-red-500 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-lg mb-2">الأمن السيبراني (Cybersecurity)</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-6">المهارات والبروتوكولات لحماية البنى التحتية والأجهزة ضد الهجمات الرقمية.</p>
+                    </div>
+                    <a href="https://grow.google/intl/en_in/cybersecurity-services/" target="_blank" rel="noopener noreferrer" class="bg-slate-900 text-white hover:bg-slate-800 font-bold text-xs py-2.5 px-4 rounded-xl text-center block">سجل في الدورة</a>
+                </div>
+                <!-- Course 2 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-red-500 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-lg mb-2">الذكاء التجاري (Business Intelligence)</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-6">تنظيم البيانات وبناء المخططات التفاعلية لدعم قرارات الإدارات.</p>
+                    </div>
+                    <a href="https://www.coursera.org/google-certificates/business-intelligence-certificate" target="_blank" rel="noopener noreferrer" class="bg-slate-900 text-white hover:bg-slate-800 font-bold text-xs py-2.5 px-4 rounded-xl text-center block">سجل في الدورة</a>
+                </div>
+                <!-- Course 3 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-red-500 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-lg mb-2">تحليلات البيانات المتقدمة</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-6">احترف التحليلات المعقدة وبناء النماذج التنبؤية بالبايثون.</p>
+                    </div>
+                    <a href="https://www.coursera.org/google-certificates/advanced-data-analytics-certificate" target="_blank" rel="noopener noreferrer" class="bg-slate-900 text-white hover:bg-slate-800 font-bold text-xs py-2.5 px-4 rounded-xl text-center block">سجل في الدورة</a>
+                </div>
+                <!-- Course 4 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-red-500 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-lg mb-2">التسويق الرقمي والتجارة الإلكترونية</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-6">بناء الإعلانات، تحسين محركات البحث SEO، وإدارة المتاجر.</p>
+                    </div>
+                    <a href="https://grow.google/intl/en_in/digital-marketing-ecommerce-services/" target="_blank" rel="noopener noreferrer" class="bg-slate-900 text-white hover:bg-slate-800 font-bold text-xs py-2.5 px-4 rounded-xl text-center block">سجل في الدورة</a>
+                </div>
+                <!-- Course 5 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-red-500 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-lg mb-2">الذكاء الاصطناعي وتعلم الآلة</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-6">تعرف على الأدوات الذكاء الاصطناعي المبتكرة من جوجل (AI Essentials).</p>
+                    </div>
+                    <a href="https://grow.google/intl/en_pk/google-ai-essentials/" target="_blank" rel="noopener noreferrer" class="bg-slate-900 text-white hover:bg-slate-800 font-bold text-xs py-2.5 px-4 rounded-xl text-center block">سجل في الدورة</a>
+                </div>
+                <!-- Course 6 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-red-500 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-lg mb-2">تحليلات البيانات (Data Analytics)</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-6">تنظيف وتحليل البيانات باستعمال الجداول والـ SQL ولغة البرمجة R.</p>
+                    </div>
+                    <a href="https://grow.google/intl/en_in/data-analytics-services/" target="_blank" rel="noopener noreferrer" class="bg-slate-900 text-white hover:bg-slate-800 font-bold text-xs py-2.5 px-4 rounded-xl text-center block">سجل في الدورة</a>
+                </div>
+                <!-- Course 7 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-red-500 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-lg mb-2">إدارة المشاريع (Project Management)</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-6">طرق التخطيط الرشيق Agile وإدارة ميزانيات وجداول المشاريع المهنية.</p>
+                    </div>
+                    <a href="https://grow.google/intl/en_in/project-management-services/" target="_blank" rel="noopener noreferrer" class="bg-slate-900 text-white hover:bg-slate-800 font-bold text-xs py-2.5 px-4 rounded-xl text-center block">سجل في الدورة</a>
+                </div>
+                <!-- Course 8 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-red-500 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-lg mb-2">تصميم تجربة المستخدم (UX Design)</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-6">إعداد واجهات تفاعلية ونماذج الهواتف والتطبيقات للمستخدمين.</p>
+                    </div>
+                    <a href="https://grow.google/intl/en_in/ux-design-services/" target="_blank" rel="noopener noreferrer" class="bg-slate-900 text-white hover:bg-slate-800 font-bold text-xs py-2.5 px-4 rounded-xl text-center block">سجل في الدورة</a>
+                </div>
+                <!-- Course 9 -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-red-500 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-lg mb-2">أتمتة تقنية المعلومات ببايثون</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-6">إصلاح مشكلات الخوادم وكتابة أوامر برمجية تسهل المهام الإدارية.</p>
+                    </div>
+                    <a href="https://www.coursera.org/google-certificates/it-automation-with-python" target="_blank" rel="noopener noreferrer" class="bg-slate-900 text-white hover:bg-slate-800 font-bold text-xs py-2.5 px-4 rounded-xl text-center block">سجل في الدورة</a>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE TOOL: COURSERA FINANCIAL AID PROMPT GENERATOR -->
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-6 md:p-8 text-white mt-12 shadow-xl">
+                <div class="text-center md:text-right mb-6">
+                    <span class="bg-indigo-500/20 text-indigo-300 font-bold px-3 py-1.5 rounded-full text-xs border border-indigo-500/30">
+                        <i class="fas fa-magic"></i> حصرياً لقناة علم ينفع
+                    </span>
+                    <h3 class="text-xl md:text-2xl font-extrabold mt-3 mb-2">مولد خطابات الدعم المالي لكورسيرا تلقائياً!</h3>
+                    <p class="text-slate-300 text-xs md:text-sm">املأ البيانات البسيطة واحصل فوراً على خطاب باللغة الإنجليزية جاهز للنسخ لتقديمه لكورسيرا والحصول على دورتك مجاناً!</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                    <!-- Form Controls -->
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs text-indigo-300 font-bold mb-1.5">اسمك الكريم بالإنجليزية</label>
+                            <input type="text" id="generator-name" placeholder="مثال: Ahmad Al-Harbi" class="w-full bg-slate-800/80 border border-slate-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-indigo-300 font-bold mb-1.5">اسم الشهادة التي تريد دراستها بالإنجليزية</label>
+                            <input type="text" id="generator-course" placeholder="مثال: Google Cybersecurity Certificate" class="w-full bg-slate-800/80 border border-slate-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-indigo-300 font-bold mb-1.5">وضعك الحالي</label>
+                            <select id="generator-status" class="w-full bg-slate-800/80 border border-slate-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
+                                <option value="student">طالب علم / جامعي (Student)</option>
+                                <option value="jobseeker">باحث عن فرصة عمل (Job Seeker)</option>
+                                <option value="unemployed">غير موظف حالياً (Unemployed)</option>
+                            </select>
+                        </div>
+                        <button onclick="generateAidText()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 px-6 rounded-xl transition-all shadow-lg text-sm flex items-center justify-center gap-2">
+                            <i class="fas fa-cog animate-spin" id="spin-icon" style="display:none;"></i> توليد الخطابات المعتمدة الآن
+                        </button>
+                    </div>
+
+                    <!-- Prompt Textbox output -->
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs text-indigo-300 font-bold mb-1.5 flex justify-between items-center">
+                                <span>الخطاب الأول (أسباب التقديم على الدعم المالي - 150 كلمة)</span>
+                                <button onclick="copyToClipboard('prompt1')" class="text-indigo-400 hover:text-indigo-300 font-bold text-xs"><i class="fas fa-copy ml-1"></i>نسخ الخطاب</button>
+                            </label>
+                            <textarea id="output-prompt1" readonly class="w-full h-32 bg-slate-800 border border-slate-700 text-slate-300 px-4 py-3 rounded-xl focus:outline-none text-xs leading-relaxed" placeholder="اضغط على زر التوليد باليسار وسيظهر خطابك هنا للنسخ المباشر..."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-indigo-300 font-bold mb-1.5 flex justify-between items-center">
+                                <span>الخطاب الثاني (كيف ستساعدك الشهادة في أهدافك المهنية - 150 كلمة)</span>
+                                <button onclick="copyToClipboard('prompt2')" class="text-indigo-400 hover:text-indigo-300 font-bold text-xs"><i class="fas fa-copy ml-1"></i>نسخ الخطاب</button>
+                            </label>
+                            <textarea id="output-prompt2" readonly class="w-full h-32 bg-slate-800 border border-slate-700 text-slate-300 px-4 py-3 rounded-xl focus:outline-none text-xs leading-relaxed" placeholder="اضغط على زر التوليد باليسار وسيظهر خطابك هنا للنسخ المباشر..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Joint Channel Telegram Banner -->
+    <section class="max-w-6xl mx-auto px-4 pb-12 w-full">
+        <div class="bg-indigo-600 rounded-3xl shadow-xl p-6 md:p-8 text-white text-center relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-indigo-950 to-black"></div>
+            <div class="relative z-10 max-w-2xl mx-auto">
+                <i class="fab fa-telegram-plane text-4xl md:text-5xl mb-4"></i>
+                <h3 class="text-xl md:text-3xl font-black mb-2">انضم لمجتمع "علم ينفع" على التيليجرام</h3>
+                <p class="text-indigo-100 mb-6 text-xs md:text-base">احصل على الملفات الحصرية والأدلة ومستندات السيرة الذاتية المهنية يومياً مجاناً!</p>
+                <a href="https://t.me/ItqanCV" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-indigo-600 hover:bg-indigo-50 font-bold px-6 md:px-8 py-3 rounded-xl shadow-lg transition-all text-sm md:text-base">
+                    <i class="fab fa-telegram-plane ml-1.5"></i> اشترك الآن معنا بالقناة
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Universal Custom Modal for alert substitute -->
+    <div id="custom-modal" class="fixed inset-0 bg-black/50 z-[9999] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 text-center shadow-2xl border border-slate-100">
+            <i class="fas fa-check-circle text-emerald-500 text-5xl mb-4"></i>
+            <h4 class="text-lg font-bold text-slate-800 mb-2" id="modal-title">تمت العملية بنجاح!</h4>
+            <p class="text-slate-500 text-xs md:text-sm leading-relaxed mb-6" id="modal-body">تم نسخ النص المحدد إلى حافظة جهازك بنجاح.</p>
+            <button onclick="closeModal()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-6 rounded-xl text-xs transition-all w-full">حسناً، فهمت</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800 text-xs">
+        <div class="max-w-6xl mx-auto px-6">
+            <p class="mb-4">جميع الحقوق محفوظة لقناة علم ينفع &copy; 2026</p>
+            <div class="flex justify-center">
+                <a href="https://t.me/ItqanCV" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:underline font-bold">
+                    <i class="fab fa-telegram ml-1"></i>إتقان السيرة الذاتية (ItqanCV)
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JS Controller logic -->
+    <script>
+        // Main Tab Switcher
+        function switchSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section-content').forEach(sec => {
+                sec.classList.add('hidden');
+            });
+            // Remove active style from buttons
+            document.querySelectorAll('.nav-tab').forEach(btn => {
+                btn.classList.remove('tab-active');
+            });
+
+            // Show target section
+            document.getElementById(`sec-${sectionId}`).classList.remove('hidden');
+            // Highlight active button
+            document.getElementById(`nav-${sectionId}`).classList.add('tab-active');
+        }
+
+        // Excel levels switcher inside excel tab
+        function switchExcelLevel(levelId) {
+            // Hide all excel tabs contents
+            document.querySelectorAll('.excel-tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+            // Reset switcher buttons style
+            document.querySelectorAll('.excel-level-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'shadow-sm', 'text-emerald-700');
+                btn.classList.add('text-slate-600');
+            });
+
+            // Show selected level contents
+            document.getElementById(`ex-level-basic`).classList.add('hidden');
+            document.getElementById(`ex-level-intermediate`).classList.add('hidden');
+            document.getElementById(`ex-level-advanced`).classList.add('hidden');
+
+            document.getElementById(`ex-level-${levelId}`).classList.remove('hidden');
+
+            // Apply active styles to correct button
+            const activeBtn = document.getElementById(`btn-ex-${levelId}`);
+            activeBtn.classList.remove('text-slate-600');
+            activeBtn.classList.add('bg-white', 'shadow-sm', 'text-emerald-700');
+        }
+
+        // Certifications live filter
+        function filterCerts(category) {
+            // Reset buttons classes
+            document.querySelectorAll('.cert-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-amber-500', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-600', 'hover:bg-slate-200');
+            });
+
+            // Set active button
+            event.target.classList.remove('bg-slate-100', 'text-slate-600', 'hover:bg-slate-200');
+            event.target.classList.add('bg-amber-500', 'text-white');
+
+            const certs = document.querySelectorAll('.cert-card');
+            certs.forEach(card => {
+                if (category === 'all') {
+                    card.classList.remove('hidden');
+                } else {
+                    if (card.getAttribute('data-category') === category) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                }
+            });
+        }
+
+        // Prompt generator logic
+        function generateAidText() {
+            const name = document.getElementById('generator-name').value.trim() || 'Ahmad Al-Harbi';
+            const courseName = document.getElementById('generator-course').value.trim() || 'Google Cybersecurity Professional Certificate';
+            const status = document.getElementById('generator-status').value;
+
+            let statusPara = "I am a determined student eager to develop my skills, but unfortunately, I lack any steady income to afford this certification.";
+            if (status === 'jobseeker') {
+                statusPara = "I am actively looking for a job to support myself, but with no current employment, I cannot afford to pay for this certificate.";
+            } else if (status === 'unemployed') {
+                statusPara = "I am currently unemployed and struggling financially, which makes it impossible to cover the costs of this course on my own.";
+            }
+
+            // Prompt 1
+            const prompt1 = `Dear Coursera Financial Aid Team,
+
+My name is ${name}. I am highly interested in taking the "${courseName}" course. ${statusPara} Financial constraints are currently holding me back from pursuing my professional goals. This course is essential for me to gain high-quality knowledge, and your financial support is my only pathway to enroll. My family is supportive of my studies, but we do not have enough monthly budget for online paid certifications. Obtaining this financial aid would allow me to study without any stress or worry, enabling me to build a better future. I promise to dedicate my full time and focus to complete this certification successfully. Thank you for your kindness and support.`;
+
+            // Prompt 2
+            const prompt2 = `Dear Coursera Financial Aid Team,
+
+Taking the "${courseName}" course is a vital milestone for my long-term career goals. This certification is globally recognized and highly demanded in the current job market. By completing it, I will gain the key technical skills necessary to apply for entry-level positions and stand out to hiring managers. This training will not only help me secure my first job, but it will also enable me to contribute effectively to my future employer from day one. Your support in granting me this financial aid will act as an investment in my professional life, helping me transition from dependency to being a productive specialist in this field. I appreciate your team's wonderful efforts in making education accessible to everyone.`;
+
+            document.getElementById('output-prompt1').value = prompt1;
+            document.getElementById('output-prompt2').value = prompt2;
+
+            showModal('تم توليد خطابات الدعم!', 'تم توليد خطابات باللغة الإنجليزية مخصصة لشهادتك ووضعك المالي بنجاح. انسخها واستخدمها في طلب الدعم بكورسيرا.');
+        }
+
+        // Custom modal helper
+        function showModal(title, text) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-body').innerText = text;
+            document.getElementById('custom-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('custom-modal').classList.add('hidden');
+        }
+
+        // Copy utility for safe iframe operations
+        function copyToClipboard(id) {
+            const textarea = document.getElementById(`output-${id}`);
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // For mobile devices
+            
+            try {
+                // Using modern fallback copy execution compatible with iframe environment
+                document.execCommand('copy');
+                showModal('تم النسخ بنجاح! 📋', 'تم نسخ نص الخطاب المحدد إلى حافظة جهازك. يمكنك لصقه مباشرة في طلب الدعم المالي بموقع كورسيرا.');
+            } catch (err) {
+                showModal('عذرًا، فشل النسخ التلقائي', 'برجاء تظليل النص يدويًا ومن ثم نسخه.');
+            }
+        }
+    </script>
+</body>
+</html>
