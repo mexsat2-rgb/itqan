@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة الارتقاء المهني والتعلم الحر | علم ينفع</title>
+    <title>دليل الإكسل واسترداد رسوم الشهادات عبر هدف | علم ينفع</title>
+    <meta name="description" content="دليل شامل لاحتراف الإكسل من الصفر، أكثر من 500 شهادة مهنية معتمدة، وطريقة استرداد رسوم شهاداتك بالكامل عبر صندوق هدف. مبادرة تعليمية مجانية لقناة علم ينفع.">
+    <link rel="canonical" href="https://mexsat2-rgb.github.io/itqan/">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_SA">
+    <meta property="og:title" content="بوابة الارتقاء المهني والتعلم الحر | علم ينفع">
+    <meta property="og:description" content="دليل الإكسل، أكثر من 500 شهادة مهنية معتمدة، وطريقة استرداد رسوم شهاداتك بالكامل عبر صندوق هدف.">
+    <meta property="og:url" content="https://mexsat2-rgb.github.io/itqan/">
+    <meta property="og:site_name" content="علم ينفع">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="بوابة الارتقاء المهني والتعلم الحر | علم ينفع">
+    <meta name="twitter:description" content="دليل الإكسل، أكثر من 500 شهادة مهنية معتمدة، وطريقة استرداد رسوم شهاداتك بالكامل عبر صندوق هدف.">
     <!-- Tailwind CSS -->
+
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -587,8 +601,13 @@
                                 <option value="unemployed">غير موظف حالياً (Unemployed)</option>
                             </select>
                         </div>
+                        <div>
+                            <label class="block text-xs text-indigo-300 font-bold mb-1.5">اشرح وضعك الحقيقي بجملتين أو ثلاث (بأي لغة تحب)</label>
+                            <textarea id="generator-details" rows="3" placeholder="مثال: أنا طالب في السنة الأخيرة، دخلي الشهري محدود ولا يغطي تكلفة الشهادة، وأحتاجها فعلاً للتقديم على وظائف الأمن السيبراني..." class="w-full bg-slate-800/80 border border-slate-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"></textarea>
+                            <p class="text-[11px] text-slate-400 mt-1">هذا الحقل يُستخدم لصياغة خطابك بأسلوب احترافي بناءً على وضعك الفعلي — مهم إن التفاصيل تكون صحيحة، لأن كورسيرا قد تراجع الطلبات.</p>
+                        </div>
                         <button onclick="generateAidText()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 px-6 rounded-xl transition-all shadow-lg text-sm flex items-center justify-center gap-2">
-                            <i class="fas fa-cog animate-spin" id="spin-icon" style="display:none;"></i> توليد الخطابات المعتمدة الآن
+                            <i class="fas fa-cog animate-spin" id="spin-icon" style="display:none;"></i> صياغة الخطابات الآن
                         </button>
                     </div>
 
@@ -727,28 +746,35 @@
             const name = document.getElementById('generator-name').value.trim() || 'Ahmad Al-Harbi';
             const courseName = document.getElementById('generator-course').value.trim() || 'Google Cybersecurity Professional Certificate';
             const status = document.getElementById('generator-status').value;
+            const details = document.getElementById('generator-details').value.trim();
 
-            let statusPara = "I am a determined student eager to develop my skills, but unfortunately, I lack any steady income to afford this certification.";
-            if (status === 'jobseeker') {
-                statusPara = "I am actively looking for a job to support myself, but with no current employment, I cannot afford to pay for this certificate.";
-            } else if (status === 'unemployed') {
-                statusPara = "I am currently unemployed and struggling financially, which makes it impossible to cover the costs of this course on my own.";
+            if (!details) {
+                showModal('محتاجين وضعك الحقيقي أولاً', 'يرجى تعبئة حقل "اشرح وضعك الحقيقي" بمعلومات صحيحة عنك، لأن الخطاب يُبنى على كلامك أنت. كورسيرا قد تراجع الطلبات، فأي معلومة غير دقيقة قد تعرّض طلبك للرفض.');
+                return;
             }
 
-            // Prompt 1
+            let statusLabel = 'a student';
+            if (status === 'jobseeker') statusLabel = 'a job seeker';
+            else if (status === 'unemployed') statusLabel = 'currently unemployed';
+
+            // Note: these letters are built directly from what the user wrote in "generator-details"
+            // rather than a fixed canned claim, so they reflect the applicant's actual situation.
             const prompt1 = `Dear Coursera Financial Aid Team,
 
-My name is ${name}. I am highly interested in taking the "${courseName}" course. ${statusPara} Financial constraints are currently holding me back from pursuing my professional goals. This course is essential for me to gain high-quality knowledge, and your financial support is my only pathway to enroll. My family is supportive of my studies, but we do not have enough monthly budget for online paid certifications. Obtaining this financial aid would allow me to study without any stress or worry, enabling me to build a better future. I promise to dedicate my full time and focus to complete this certification successfully. Thank you for your kindness and support.`;
+My name is ${name}, and I am ${statusLabel}. I am highly interested in taking the "${courseName}" course. Here is my situation: ${details}
 
-            // Prompt 2
+Financial constraints are currently holding me back from pursuing my professional goals, and this course is essential for me to gain high-quality knowledge. I would truly appreciate your support in granting me financial aid so I can enroll. I promise to dedicate my full time and focus to complete this certification successfully. Thank you for your kindness and support.`;
+
             const prompt2 = `Dear Coursera Financial Aid Team,
 
-Taking the "${courseName}" course is a vital milestone for my long-term career goals. This certification is globally recognized and highly demanded in the current job market. By completing it, I will gain the key technical skills necessary to apply for entry-level positions and stand out to hiring managers. This training will not only help me secure my first job, but it will also enable me to contribute effectively to my future employer from day one. Your support in granting me this financial aid will act as an investment in my professional life, helping me transition from dependency to being a productive specialist in this field. I appreciate your team's wonderful efforts in making education accessible to everyone.`;
+Taking the "${courseName}" course is a vital milestone for my career goals. ${details}
+
+This certification is globally recognized and highly demanded in the current job market. By completing it, I will gain the key technical skills necessary to apply for relevant positions and stand out to hiring managers. Your support in granting me this financial aid would be a meaningful investment in my professional future. I appreciate your team's efforts in making education accessible to everyone.`;
 
             document.getElementById('output-prompt1').value = prompt1;
             document.getElementById('output-prompt2').value = prompt2;
 
-            showModal('تم توليد خطابات الدعم!', 'تم توليد خطابات باللغة الإنجليزية مخصصة لشهادتك ووضعك المالي بنجاح. انسخها واستخدمها في طلب الدعم بكورسيرا.');
+            showModal('تم صياغة خطاباتك!', 'تم صياغة خطابين بالإنجليزية بناءً على وضعك الحقيقي اللي كتبته. راجعهم قبل الإرسال وتأكد إن كل التفاصيل صحيحة.');
         }
 
         // Custom modal helper
