@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mexsat2-rgb.github.io/itqan/sitemap.xml
