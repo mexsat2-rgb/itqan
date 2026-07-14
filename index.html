@@ -6,6 +6,11 @@
     <title>دليل الإكسل واسترداد رسوم الشهادات عبر هدف | علم ينفع</title>
     <meta name="description" content="دليل شامل لاحتراف الإكسل من الصفر، أكثر من 500 شهادة مهنية معتمدة، وطريقة استرداد رسوم شهاداتك بالكامل عبر صندوق هدف. مبادرة تعليمية مجانية لقناة علم ينفع.">
     <link rel="canonical" href="https://mexsat2-rgb.github.io/itqan/">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#f59e0b">
+    <meta name="color-scheme" content="light">
+    <!-- Favicon (inline SVG, no extra file needed) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23f59e0b'/%3E%3Ctext x='50' y='68' font-size='55' text-anchor='middle' fill='white' font-family='Arial,sans-serif' font-weight='bold'%3Eإ%3C/text%3E%3C/svg%3E">
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ar_SA">
@@ -13,10 +18,34 @@
     <meta property="og:description" content="دليل الإكسل، أكثر من 500 شهادة مهنية معتمدة، وطريقة استرداد رسوم شهاداتك بالكامل عبر صندوق هدف.">
     <meta property="og:url" content="https://mexsat2-rgb.github.io/itqan/">
     <meta property="og:site_name" content="علم ينفع">
+    <meta property="og:image" content="https://mexsat2-rgb.github.io/itqan/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="بوابة الارتقاء المهني والتعلم الحر | علم ينفع">
     <meta name="twitter:description" content="دليل الإكسل، أكثر من 500 شهادة مهنية معتمدة، وطريقة استرداد رسوم شهاداتك بالكامل عبر صندوق هدف.">
+    <meta name="twitter:image" content="https://mexsat2-rgb.github.io/itqan/assets/og-image.png">
+    <!-- Preconnects for faster external resource loading -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "علم ينفع - بوابة الارتقاء المهني",
+      "url": "https://mexsat2-rgb.github.io/itqan/",
+      "description": "دليل شامل لاحتراف الإكسل، أكثر من 500 شهادة مهنية احترافية معتمدة بأكثر من 60 تخصص، وطريقة استرداد رسوم الشهادات عبر صندوق هدف.",
+      "inLanguage": "ar",
+      "publisher": {
+        "@type": "Organization",
+        "name": "علم ينفع"
+      }
+    }
+    </script>
     <!-- Tailwind CSS -->
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,9 +55,13 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');
         
+        html {
+            background-color: #f8fafc;
+        }
         body {
             font-family: 'Tajawal', sans-serif;
             background-color: #f8fafc;
+            color: #1e293b;
         }
 
         /* Custom Scrollbar for better UX */
@@ -7824,6 +7857,12 @@
                 </div>
             </div>
 
+            <div class="text-center">
+                <button id="load-more-btn" onclick="loadMoreCerts()" class="hidden px-6 py-3 rounded-xl bg-slate-800 text-white text-sm font-bold hover:bg-slate-700 transition-all">
+                    تحميل المزيد <i class="fas fa-chevron-down text-xs mr-1"></i>
+                </button>
+            </div>
+
             <p id="certs-empty" class="hidden text-center text-slate-400 text-sm py-10">لا توجد نتائج مطابقة لبحثك. جرّب كلمة أخرى أو اختر "كل الشهادات".</p>
 
             <!-- PDF Manual Info Alert -->
@@ -8126,10 +8165,14 @@
             activeBtn.classList.add('bg-white', 'shadow-sm', 'text-emerald-700');
         }
 
-        // Certifications live filter
+        // Certifications live filter (with pagination for performance)
         let currentCertCategory = 'all';
+        const CERTS_PAGE_SIZE = 24;
+        let certsVisibleLimit = CERTS_PAGE_SIZE;
+
         function filterCerts(category) {
             currentCertCategory = category;
+            certsVisibleLimit = CERTS_PAGE_SIZE; // reset pagination on new filter
             // Reset buttons classes
             document.querySelectorAll('.cert-filter-btn').forEach(btn => {
                 btn.classList.remove('bg-amber-500', 'text-white');
@@ -8143,9 +8186,16 @@
             }
 
             applyCertFilters();
+            document.getElementById('sec-certs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function searchCerts() {
+            certsVisibleLimit = CERTS_PAGE_SIZE; // reset pagination on new search
+            applyCertFilters();
+        }
+
+        function loadMoreCerts() {
+            certsVisibleLimit += CERTS_PAGE_SIZE;
             applyCertFilters();
         }
 
@@ -8153,29 +8203,62 @@
             const searchBox = document.getElementById('cert-search');
             const query = searchBox ? searchBox.value.trim().toLowerCase() : '';
             const certs = document.querySelectorAll('.cert-card');
-            let visibleCount = 0;
 
+            // First pass: determine which cards match category + search
+            const matched = [];
             certs.forEach(card => {
                 const matchesCategory = (currentCertCategory === 'all') || (card.getAttribute('data-category') === currentCertCategory);
                 const cardText = card.innerText.toLowerCase();
                 const matchesSearch = query === '' || cardText.includes(query);
-
                 if (matchesCategory && matchesSearch) {
-                    card.classList.remove('hidden');
-                    visibleCount++;
+                    matched.push(card);
                 } else {
                     card.classList.add('hidden');
                 }
             });
 
+            // Second pass: show only up to certsVisibleLimit of the matched cards
+            matched.forEach((card, i) => {
+                if (i < certsVisibleLimit) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            const visibleCount = Math.min(matched.length, certsVisibleLimit);
+
             const countEl = document.getElementById('certs-count');
-            if (countEl) countEl.textContent = `عرض ${visibleCount} شهادة`;
+            if (countEl) countEl.textContent = `عرض ${visibleCount} من ${matched.length} شهادة`;
 
             const emptyEl = document.getElementById('certs-empty');
-            if (emptyEl) emptyEl.classList.toggle('hidden', visibleCount !== 0);
+            if (emptyEl) emptyEl.classList.toggle('hidden', matched.length !== 0);
+
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            if (loadMoreBtn) loadMoreBtn.classList.toggle('hidden', matched.length <= certsVisibleLimit);
         }
 
         document.addEventListener('DOMContentLoaded', applyCertFilters);
+
+        // Back to top floating button
+        (function() {
+            const btn = document.createElement('button');
+            btn.id = 'back-to-top';
+            btn.setAttribute('aria-label', 'العودة للأعلى');
+            btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            btn.className = 'fixed bottom-6 left-6 z-50 w-11 h-11 rounded-full bg-slate-800 text-white shadow-lg hidden items-center justify-center hover:bg-slate-700 transition-all';
+            btn.onclick = function() { window.scrollTo({ top: 0, behavior: 'smooth' }); };
+            document.body.appendChild(btn);
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 600) {
+                    btn.classList.remove('hidden');
+                    btn.classList.add('flex');
+                } else {
+                    btn.classList.add('hidden');
+                    btn.classList.remove('flex');
+                }
+            });
+        })();
 
         // Prompt generator logic
         function generateAidText() {
