@@ -8,7 +8,7 @@
     <link rel="canonical" href="https://mexsat2-rgb.github.io/itqan/">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#f59e0b">
-    <meta name="color-scheme" content="light">
+    <meta name="color-scheme" content="light dark">
     <!-- Favicon (inline SVG, no extra file needed) -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23f59e0b'/%3E%3Ctext x='50' y='68' font-size='55' text-anchor='middle' fill='white' font-family='Arial,sans-serif' font-weight='bold'%3Eإ%3C/text%3E%3C/svg%3E">
     <!-- Open Graph -->
@@ -88,6 +88,205 @@
             color: #ffffff !important;
             box-shadow: 0 4px 14px 0 rgba(15, 23, 42, 0.2);
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in { animation: fadeIn 0.35s ease both; }
+
+        /* ===================== DARK MODE ===================== */
+        html.dark {
+            color-scheme: dark;
+        }
+        html.dark body {
+            background-color: #0f172a !important;
+            color: #e2e8f0 !important;
+        }
+        html.dark header {
+            background: linear-gradient(to right, #020617, #1e1b4b, #020617) !important;
+        }
+        html.dark nav {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+        }
+        html.dark .nav-tab {
+            color: #94a3b8 !important;
+        }
+        html.dark .nav-tab:hover {
+            background-color: #334155 !important;
+        }
+        html.dark .tab-active {
+            background-color: #f8fafc !important;
+            color: #0f172a !important;
+        }
+        html.dark .glass-card {
+            background: rgba(30, 41, 59, 0.95) !important;
+            border-color: #334155 !important;
+        }
+        html.dark .bg-white {
+            background-color: #1e293b !important;
+        }
+        html.dark .bg-slate-50 { background-color: #0f172a !important; }
+        html.dark .bg-slate-100 { background-color: #1e293b !important; }
+        html.dark .bg-indigo-50 { background-color: rgba(79,70,229,0.15) !important; }
+        html.dark .bg-blue-50   { background-color: rgba(59,130,246,0.12) !important; }
+        html.dark .bg-emerald-50{ background-color: rgba(16,185,129,0.12) !important; }
+        html.dark .bg-amber-50  { background-color: rgba(245,158,11,0.12) !important; }
+        html.dark .bg-red-50    { background-color: rgba(239,68,68,0.12) !important; }
+        html.dark .bg-gradient-to-br { background: #1e293b !important; }
+        html.dark .border-slate-200 { border-color: #334155 !important; }
+        html.dark .border-slate-100 { border-color: #334155 !important; }
+        html.dark .text-slate-800 { color: #e2e8f0 !important; }
+        html.dark .text-slate-700 { color: #cbd5e1 !important; }
+        html.dark .text-slate-600 { color: #94a3b8 !important; }
+        html.dark .text-slate-500 { color: #64748b !important; }
+        html.dark .text-slate-400 { color: #475569 !important; }
+        html.dark .text-indigo-950 { color: #c7d2fe !important; }
+        html.dark .text-blue-800  { color: #93c5fd !important; }
+        html.dark main { background-color: #0f172a !important; }
+        html.dark input[type="text"] {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+            color: #e2e8f0 !important;
+        }
+        html.dark input[type="text"]::placeholder { color: #475569 !important; }
+        html.dark textarea {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+            color: #e2e8f0 !important;
+        }
+        html.dark select {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+            color: #e2e8f0 !important;
+        }
+        html.dark .cert-filter-btn.bg-slate-100 {
+            background-color: #1e293b !important;
+            color: #94a3b8 !important;
+        }
+        html.dark .cert-filter-btn.bg-slate-100:hover {
+            background-color: #334155 !important;
+        }
+        html.dark footer {
+            background-color: #020617 !important;
+            border-color: #1e293b !important;
+        }
+        html.dark #custom-modal > div {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+        }
+        html.dark ::-webkit-scrollbar-track { background: #1e293b; }
+        html.dark ::-webkit-scrollbar-thumb { background: #475569; }
+
+        /* Dark mode toggle button */
+        #dark-toggle {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            border: 2px solid #e2e8f0;
+            background: transparent;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        html.dark #dark-toggle { border-color: #475569; }
+
+        /* Telegram floating button */
+        #tg-float {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            z-index: 1000;
+            background: #229ED9;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 18px;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(34,158,217,0.5);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        #tg-float:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(34,158,217,0.6); }
+
+        /* Telegram popup */
+        #tg-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 9998;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        #tg-popup.show { display: flex; }
+        #tg-popup-inner {
+            background: white;
+            border-radius: 24px;
+            padding: 32px 28px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 0.3s ease;
+        }
+        html.dark #tg-popup-inner { background: #1e293b; }
+        #tg-popup-close {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+
+        /* Social share buttons */
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        .share-wa  { background: #25D366; color: white; }
+        .share-wa:hover  { background: #1da851; }
+        .share-x   { background: #000; color: white; }
+        .share-x:hover   { background: #333; }
+
+        /* هدف highlight badge */
+        .hrdf-badge {
+            display: inline-block;
+            background: #facc15;
+            color: #78350f;
+            font-size: 9px;
+            font-weight: 900;
+            padding: 1px 5px;
+            border-radius: 6px;
+            margin-right: 4px;
+            vertical-align: middle;
+            animation: pulse-badge 2s infinite;
+        }
+        @keyframes pulse-badge {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
     </style>
 </head>
 <body class="text-slate-800 flex flex-col min-h-screen">
@@ -107,8 +306,8 @@
     </header>
 
     <!-- Main Navigation Bar -->
-    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm overflow-x-auto whitespace-nowrap">
-        <div class="max-w-6xl mx-auto px-4 flex justify-start md:justify-center gap-2 py-3">
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 flex items-center gap-2 py-3 overflow-x-auto whitespace-nowrap">
             <button onclick="switchSection('welcome')" id="nav-welcome" class="nav-tab px-5 py-2.5 rounded-xl font-bold text-sm text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 tab-active">
                 <i class="fas fa-home"></i> الرئيسية
             </button>
@@ -119,10 +318,19 @@
                 <i class="fas fa-award text-amber-500"></i> دليل 500+ شهادة
             </button>
             <button onclick="switchSection('hrdf')" id="nav-hrdf" class="nav-tab px-5 py-2.5 rounded-xl font-bold text-sm text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2">
-                <i class="fas fa-credit-card text-blue-500"></i> دليل تعويض "هدف"
+                <i class="fas fa-hand-holding-dollar text-blue-500"></i>
+                <span>دليل تعويض "هدف"</span>
+                <span class="hrdf-badge">مميز</span>
             </button>
             <button onclick="switchSection('google')" id="nav-google" class="nav-tab px-5 py-2.5 rounded-xl font-bold text-sm text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2">
                 <i class="fab fa-google text-red-500"></i> شهادات جوجل المجانية
+            </button>
+            <button onclick="switchSection('about')" id="nav-about" class="nav-tab px-5 py-2.5 rounded-xl font-bold text-sm text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2">
+                <i class="fas fa-info-circle text-indigo-500"></i> من نحن
+            </button>
+            <!-- Dark Mode Toggle -->
+            <button id="dark-toggle" onclick="toggleDark()" aria-label="تبديل الوضع الليلي" title="الوضع الليلي" class="mr-auto">
+                <i class="fas fa-moon"></i>
             </button>
         </div>
     </nav>
@@ -7868,6 +8076,19 @@
                     <strong>تنويه هام من قناة علم ينفع:</strong> تم استخلاص هذه الشهادات وبياناتها (المستوى والتكلفة التقريبية) من "دليل الشهادات الاحترافية للتخصصات المهنية (النسخة الثانية)" المرفق كـ PDF بقناتنا في تيليجرام. الأسعار تقريبية وقد تتغير من الجهة المانحة، وتفاصيل المتطلبات المسبقة والتسجيل متوفرة كاملة داخل الملف المرفق. مدى التعويض عبر صندوق "هدف" يختلف من شهادة لأخرى، راجع قسم "دليل تعويض هدف" للتفاصيل.
                 </div>
             </div>
+
+            <!-- Social Share Bar -->
+            <div class="flex items-center justify-center gap-3 flex-wrap py-2">
+                <span class="text-xs text-slate-400 font-bold">شارك الدليل:</span>
+                <button class="share-btn share-wa"
+                    onclick="shareWhatsApp('🎓 اكتشفت دليلاً رائعاً فيه 500+ شهادة مهنية وطريقة استرداد رسومها من هدف مجاناً! https://mexsat2-rgb.github.io/itqan/')">
+                    <i class="fab fa-whatsapp"></i> واتساب
+                </button>
+                <button class="share-btn share-x"
+                    onclick="shareX('اكتشفت دليلاً فيه 500+ شهادة مهنية معتمدة وطريقة استردادها من #هدف مجاناً عبر @ItqanCV 🎓 https://mexsat2-rgb.github.io/itqan/')">
+                    <i class="fab fa-x-twitter"></i> X (تويتر)
+                </button>
+            </div>
         </section>
 
         <!-- SECTION 4: HADAF SUPPORT (صندوق هدف) -->
@@ -8078,6 +8299,73 @@
             </div>
         </section>
 
+        <!-- SECTION 6: ABOUT (من نحن) -->
+        <section id="sec-about" class="section-content hidden space-y-8 animate-fade-in">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-800"><i class="fas fa-info-circle text-indigo-500 ml-2"></i>من نحن — قصة هذا الدليل</h2>
+                <p class="text-slate-500 text-sm mt-1">لماذا يُعتمد على هذا المورد وما مصدره؟</p>
+            </div>
+
+            <!-- Origin card -->
+            <div class="bg-gradient-to-br from-indigo-50 to-slate-50 border border-indigo-100 rounded-3xl p-6 md:p-10">
+                <div class="flex flex-col md:flex-row items-start gap-6">
+                    <div class="w-16 h-16 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-3xl shrink-0 shadow-lg">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-extrabold text-indigo-950 mb-3">مبادرة قناة "علم ينفع" التعليمية</h3>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            هذه البوابة هي مشروع تطوعي أطلقته قناة <strong>علم ينفع</strong> على تيليجرام بهدف واحد: أن يجد كل باحث عن التطوير المهني دليله الشامل في مكان واحد، مجاناً، دون عناء البحث المشتت.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed">
+                            بدأت الفكرة من ملاحظة بسيطة — كثير من السعوديين يجهلون أن بإمكانهم الحصول على شهادات مهنية عالمية واسترداد رسومها بالكامل عبر صندوق تنمية الموارد البشرية (هدف). جمعنا هذه المعلومات وصغناها في دليل عملي يمكن لأي شخص تطبيقه فوراً.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Source & Trustworthiness -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card rounded-2xl p-6 border-r-4 border-r-amber-500">
+                    <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg mb-4">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-800 mb-2">مصدر الشهادات</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">بيانات الشهادات الـ 534+ مستخلصة من "دليل الشهادات الاحترافية للتخصصات المهنية — النسخة الثانية"، وهو دليل رسمي معتمد يغطي أكثر من 60 تخصصاً مهنياً.</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6 border-r-4 border-r-blue-500">
+                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-800 mb-2">لماذا نُوثَق به؟</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">المعلومات مبنية على التجربة الفعلية لأعضاء القناة الذين مروا بعملية التقديم وحصلوا على التعويض. نحن لسنا نقلًا نظرياً — بل موثّقون من الميدان.</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6 border-r-4 border-r-emerald-500">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg mb-4">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-800 mb-2">التحديثات</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">الأسعار وقوائم الشهادات تتغير. نحرص على تحديث هذا الدليل بشكل دوري، وننشر أي تغييرات جوهرية أولاً في قناتنا على تيليجرام.</p>
+                </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="bg-blue-50 border border-blue-200 rounded-2xl p-5 flex items-start gap-4">
+                <i class="fas fa-exclamation-circle text-blue-600 text-xl mt-0.5 shrink-0"></i>
+                <div class="text-sm text-blue-800 leading-relaxed">
+                    <strong>إخلاء مسؤولية:</strong> هذا الدليل للأغراض التثقيفية. الأسعار والشروط قد تتغير من الجهة المانحة أو صندوق هدف. تحقق دائمًا من المصادر الرسمية قبل اتخاذ أي قرار مالي. قناة علم ينفع لا تتقاضى أي عمولة أو رسوم مقابل هذه المعلومات.
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center py-4">
+                <a href="https://t.me/ItqanCV" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-4 rounded-2xl shadow-lg transition-all text-base">
+                    <i class="fab fa-telegram-plane text-xl"></i>
+                    انضم للمجتمع على تيليجرام لتبقى محدّثاً
+                </a>
+            </div>
+        </section>
+
     </main>
 
     <!-- Joint Channel Telegram Banner -->
@@ -8094,6 +8382,28 @@
             </div>
         </div>
     </section>
+
+    <!-- Telegram Floating Button -->
+    <a id="tg-float" href="https://t.me/ItqanCV" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-telegram-plane text-lg"></i>
+        <span>انضم للقناة</span>
+    </a>
+
+    <!-- Telegram Popup (timer + exit intent) -->
+    <div id="tg-popup" role="dialog" aria-modal="true">
+        <div id="tg-popup-inner">
+            <button id="tg-popup-close" onclick="closeTgPopup()" aria-label="إغلاق">✕</button>
+            <div class="text-5xl mb-4">📢</div>
+            <h3 class="text-xl font-black text-slate-800 mb-2">لا تفوّت شيئاً!</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-6">الملفات الحصرية، الدليل الكامل بـ PDF، وتحديثات هدف — كلها تصل أولاً لأعضاء قناة <strong>علم ينفع</strong> على تيليجرام.</p>
+            <a href="https://t.me/ItqanCV" target="_blank" rel="noopener noreferrer"
+               onclick="closeTgPopup()"
+               class="inline-flex items-center justify-center gap-2 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-2xl transition-all text-sm mb-3">
+                <i class="fab fa-telegram-plane"></i> اشترك الآن — مجاناً
+            </a>
+            <button onclick="closeTgPopup()" class="text-xs text-slate-400 hover:text-slate-600 transition-all">لا شكراً، سأتابع لاحقاً</button>
+        </div>
+    </div>
 
     <!-- Universal Custom Modal for alert substitute -->
     <div id="custom-modal" class="fixed inset-0 bg-black/50 z-[9999] hidden flex items-center justify-center p-4">
@@ -8119,74 +8429,124 @@
 
     <!-- Interactive JS Controller logic -->
     <script>
-        // Main Tab Switcher
-        function switchSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('.section-content').forEach(sec => {
-                sec.classList.add('hidden');
-            });
-            // Remove active style from buttons
-            document.querySelectorAll('.nav-tab').forEach(btn => {
-                btn.classList.remove('tab-active');
-            });
+        // ── Page title mapping ──────────────────────────────────────────────────
+        const SECTION_TITLES = {
+            welcome: 'الرئيسية | علم ينفع',
+            excel:   'دليل الإكسل | علم ينفع',
+            certs:   'دليل 500+ شهادة | علم ينفع',
+            hrdf:    'دليل تعويض هدف | علم ينفع',
+            google:  'شهادات جوجل المجانية | علم ينفع',
+            about:   'من نحن | علم ينفع',
+        };
 
-            // Show target section
-            document.getElementById(`sec-${sectionId}`).classList.remove('hidden');
-            // Highlight active button
-            document.getElementById(`nav-${sectionId}`).classList.add('tab-active');
+        // ── Main Tab Switcher ───────────────────────────────────────────────────
+        function switchSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(sec => sec.classList.add('hidden'));
+            document.querySelectorAll('.nav-tab').forEach(btn => btn.classList.remove('tab-active'));
+            const sec = document.getElementById(`sec-${sectionId}`);
+            const btn = document.getElementById(`nav-${sectionId}`);
+            if (sec) sec.classList.remove('hidden');
+            if (btn) btn.classList.add('tab-active');
+            // Dynamic title + hash routing
+            document.title = SECTION_TITLES[sectionId] || document.title;
+            history.replaceState(null, '', `#${sectionId}`);
         }
 
-        // Excel levels switcher inside excel tab
+        // ── Hash routing on load ────────────────────────────────────────────────
+        document.addEventListener('DOMContentLoaded', function() {
+            const hash = location.hash.replace('#', '');
+            const valid = ['welcome','excel','certs','hrdf','google','about'];
+            if (hash && valid.includes(hash)) {
+                switchSection(hash);
+            } else {
+                document.title = SECTION_TITLES.welcome;
+            }
+            applyCertFilters();
+            initDarkMode();
+            initBackToTop();
+            initTgPopup();
+        });
+
+        // ── Excel levels switcher ───────────────────────────────────────────────
         function switchExcelLevel(levelId) {
-            // Hide all excel tabs contents
-            document.querySelectorAll('.excel-tab-content').forEach(tab => {
-                tab.classList.add('hidden');
-            });
-            // Reset switcher buttons style
+            document.querySelectorAll('.excel-tab-content').forEach(tab => tab.classList.add('hidden'));
             document.querySelectorAll('.excel-level-btn').forEach(btn => {
                 btn.classList.remove('bg-white', 'shadow-sm', 'text-emerald-700');
                 btn.classList.add('text-slate-600');
             });
-
-            // Show selected level contents
-            document.getElementById(`ex-level-basic`).classList.add('hidden');
-            document.getElementById(`ex-level-intermediate`).classList.add('hidden');
-            document.getElementById(`ex-level-advanced`).classList.add('hidden');
-
-            document.getElementById(`ex-level-${levelId}`).classList.remove('hidden');
-
-            // Apply active styles to correct button
+            ['basic','intermediate','advanced'].forEach(l =>
+                document.getElementById(`ex-level-${l}`)?.classList.add('hidden'));
+            document.getElementById(`ex-level-${levelId}`)?.classList.remove('hidden');
             const activeBtn = document.getElementById(`btn-ex-${levelId}`);
-            activeBtn.classList.remove('text-slate-600');
-            activeBtn.classList.add('bg-white', 'shadow-sm', 'text-emerald-700');
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-600');
+                activeBtn.classList.add('bg-white', 'shadow-sm', 'text-emerald-700');
+            }
         }
 
-        // Certifications live filter (with pagination for performance)
+        // ── Fuzzy search helpers ────────────────────────────────────────────────
+        /**
+         * Returns true if `needle` fuzzy-matches within `haystack`.
+         * Exact substring first, then character-sequence match for short queries,
+         * then Levenshtein tolerance for longer words.
+         */
+        function fuzzyMatch(needle, haystack) {
+            if (!needle) return true;
+            if (haystack.includes(needle)) return true;
+
+            // Character-sequence match (all chars of needle appear in order in haystack)
+            let hi = 0;
+            for (let ni = 0; ni < needle.length; ni++) {
+                hi = haystack.indexOf(needle[ni], hi);
+                if (hi === -1) break;
+                hi++;
+                if (ni === needle.length - 1) return true;
+            }
+
+            // Token-level Levenshtein: each word in needle vs each word in haystack
+            const needleTokens = needle.split(/\s+/).filter(Boolean);
+            const haystackTokens = haystack.split(/\s+/).filter(Boolean);
+            return needleTokens.every(nt => {
+                const maxDist = nt.length <= 3 ? 0 : nt.length <= 5 ? 1 : 2;
+                return haystackTokens.some(ht => levenshtein(nt, ht) <= maxDist);
+            });
+        }
+
+        function levenshtein(a, b) {
+            const m = a.length, n = b.length;
+            if (Math.abs(m - n) > 3) return 99; // fast reject
+            const dp = Array.from({length: m+1}, (_, i) => [i]);
+            for (let j = 1; j <= n; j++) dp[0][j] = j;
+            for (let i = 1; i <= m; i++)
+                for (let j = 1; j <= n; j++)
+                    dp[i][j] = a[i-1] === b[j-1]
+                        ? dp[i-1][j-1]
+                        : 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
+            return dp[m][n];
+        }
+
+        // ── Certifications live filter (with fuzzy search + pagination) ─────────
         let currentCertCategory = 'all';
         const CERTS_PAGE_SIZE = 24;
         let certsVisibleLimit = CERTS_PAGE_SIZE;
 
         function filterCerts(category) {
             currentCertCategory = category;
-            certsVisibleLimit = CERTS_PAGE_SIZE; // reset pagination on new filter
-            // Reset buttons classes
+            certsVisibleLimit = CERTS_PAGE_SIZE;
             document.querySelectorAll('.cert-filter-btn').forEach(btn => {
                 btn.classList.remove('bg-amber-500', 'text-white');
                 btn.classList.add('bg-slate-100', 'text-slate-600', 'hover:bg-slate-200');
             });
-
-            // Set active button
             if (typeof event !== 'undefined' && event.target) {
                 event.target.classList.remove('bg-slate-100', 'text-slate-600', 'hover:bg-slate-200');
                 event.target.classList.add('bg-amber-500', 'text-white');
             }
-
             applyCertFilters();
             document.getElementById('sec-certs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function searchCerts() {
-            certsVisibleLimit = CERTS_PAGE_SIZE; // reset pagination on new search
+            certsVisibleLimit = CERTS_PAGE_SIZE;
             applyCertFilters();
         }
 
@@ -8199,81 +8559,124 @@
             const searchBox = document.getElementById('cert-search');
             const query = searchBox ? searchBox.value.trim().toLowerCase() : '';
             const certs = document.querySelectorAll('.cert-card');
-
-            // First pass: determine which cards match category + search
             const matched = [];
             certs.forEach(card => {
-                const matchesCategory = (currentCertCategory === 'all') || (card.getAttribute('data-category') === currentCertCategory);
+                const matchesCategory = (currentCertCategory === 'all') ||
+                    (card.getAttribute('data-category') === currentCertCategory);
                 const cardText = card.innerText.toLowerCase();
-                const matchesSearch = query === '' || cardText.includes(query);
+                const matchesSearch = fuzzyMatch(query, cardText);
                 if (matchesCategory && matchesSearch) {
                     matched.push(card);
                 } else {
                     card.classList.add('hidden');
                 }
             });
-
-            // Second pass: show only up to certsVisibleLimit of the matched cards
             matched.forEach((card, i) => {
-                if (i < certsVisibleLimit) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
+                i < certsVisibleLimit ? card.classList.remove('hidden') : card.classList.add('hidden');
             });
-
             const visibleCount = Math.min(matched.length, certsVisibleLimit);
-
             const countEl = document.getElementById('certs-count');
             if (countEl) countEl.textContent = `عرض ${visibleCount} من ${matched.length} شهادة`;
-
             const emptyEl = document.getElementById('certs-empty');
             if (emptyEl) emptyEl.classList.toggle('hidden', matched.length !== 0);
-
             const loadMoreBtn = document.getElementById('load-more-btn');
             if (loadMoreBtn) loadMoreBtn.classList.toggle('hidden', matched.length <= certsVisibleLimit);
         }
 
-        document.addEventListener('DOMContentLoaded', applyCertFilters);
+        // ── Dark Mode ───────────────────────────────────────────────────────────
+        function initDarkMode() {
+            const saved = localStorage.getItem('itqan-dark');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (saved === 'true' || (saved === null && prefersDark)) {
+                document.documentElement.classList.add('dark');
+                updateDarkIcon(true);
+            }
+        }
 
-        // Back to top floating button
-        (function() {
+        function toggleDark() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('itqan-dark', isDark);
+            updateDarkIcon(isDark);
+        }
+
+        function updateDarkIcon(isDark) {
+            const btn = document.getElementById('dark-toggle');
+            if (btn) btn.innerHTML = isDark
+                ? '<i class="fas fa-sun" style="color:#fbbf24"></i>'
+                : '<i class="fas fa-moon"></i>';
+        }
+
+        // ── Back to top floating button ─────────────────────────────────────────
+        function initBackToTop() {
             const btn = document.createElement('button');
             btn.id = 'back-to-top';
             btn.setAttribute('aria-label', 'العودة للأعلى');
             btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
             btn.className = 'fixed bottom-6 left-6 z-50 w-11 h-11 rounded-full bg-slate-800 text-white shadow-lg hidden items-center justify-center hover:bg-slate-700 transition-all';
-            btn.onclick = function() { window.scrollTo({ top: 0, behavior: 'smooth' }); };
+            btn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
             document.body.appendChild(btn);
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', () => {
                 if (window.scrollY > 600) {
-                    btn.classList.remove('hidden');
-                    btn.classList.add('flex');
+                    btn.classList.remove('hidden'); btn.classList.add('flex');
                 } else {
-                    btn.classList.add('hidden');
-                    btn.classList.remove('flex');
+                    btn.classList.add('hidden'); btn.classList.remove('flex');
                 }
             });
-        })();
+        }
 
-        // Prompt generator logic
+        // ── Telegram Popup ──────────────────────────────────────────────────────
+        let tgPopupShown = false;
+
+        function initTgPopup() {
+            if (sessionStorage.getItem('itqan-tg-dismissed')) return;
+            // Timer: show after 45 seconds
+            setTimeout(() => { if (!tgPopupShown) showTgPopup(); }, 45000);
+            // Exit intent: mouse leaves top of viewport
+            document.addEventListener('mouseleave', function(e) {
+                if (e.clientY < 10 && !tgPopupShown) showTgPopup();
+            });
+        }
+
+        function showTgPopup() {
+            tgPopupShown = true;
+            document.getElementById('tg-popup').classList.add('show');
+        }
+
+        function closeTgPopup() {
+            document.getElementById('tg-popup').classList.remove('show');
+            sessionStorage.setItem('itqan-tg-dismissed', '1');
+        }
+
+        // Close popup on backdrop click
+        document.getElementById('tg-popup')?.addEventListener('click', function(e) {
+            if (e.target === this) closeTgPopup();
+        });
+
+        // ── Social Share ────────────────────────────────────────────────────────
+        function shareWhatsApp(text) {
+            const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank', 'noopener');
+        }
+
+        function shareX(text) {
+            const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank', 'noopener');
+        }
+
+        // ── Prompt generator logic ──────────────────────────────────────────────
         function generateAidText() {
             const name = document.getElementById('generator-name').value.trim() || 'Ahmad Al-Harbi';
             const courseName = document.getElementById('generator-course').value.trim() || 'Google Cybersecurity Professional Certificate';
             const status = document.getElementById('generator-status').value;
             const details = document.getElementById('generator-details').value.trim();
-
             if (!details) {
                 showModal('محتاجين وضعك الحقيقي أولاً', 'يرجى تعبئة حقل "اشرح وضعك الحقيقي" بمعلومات صحيحة عنك، لأن الخطاب يُبنى على كلامك أنت. كورسيرا قد تراجع الطلبات، فأي معلومة غير دقيقة قد تعرّض طلبك للرفض.');
                 return;
             }
-
             let statusLabel = 'a student';
             if (status === 'jobseeker') statusLabel = 'a job seeker';
             else if (status === 'unemployed') statusLabel = 'currently unemployed';
 
-            // Note: these letters are built directly from what the user wrote in "generator-details"
-            // rather than a fixed canned claim, so they reflect the applicant's actual situation.
             const prompt1 = `Dear Coursera Financial Aid Team,
 
 My name is ${name}, and I am ${statusLabel}. I am highly interested in taking the "${courseName}" course. Here is my situation: ${details}
@@ -8288,29 +8691,25 @@ This certification is globally recognized and highly demanded in the current job
 
             document.getElementById('output-prompt1').value = prompt1;
             document.getElementById('output-prompt2').value = prompt2;
-
             showModal('تم صياغة خطاباتك!', 'تم صياغة خطابين بالإنجليزية بناءً على وضعك الحقيقي اللي كتبته. راجعهم قبل الإرسال وتأكد إن كل التفاصيل صحيحة.');
         }
 
-        // Custom modal helper
+        // ── Custom modal helper ─────────────────────────────────────────────────
         function showModal(title, text) {
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-body').innerText = text;
             document.getElementById('custom-modal').classList.remove('hidden');
         }
-
         function closeModal() {
             document.getElementById('custom-modal').classList.add('hidden');
         }
 
-        // Copy utility for safe iframe operations
+        // ── Copy utility ────────────────────────────────────────────────────────
         function copyToClipboard(id) {
             const textarea = document.getElementById(`output-${id}`);
             textarea.select();
-            textarea.setSelectionRange(0, 99999); // For mobile devices
-            
+            textarea.setSelectionRange(0, 99999);
             try {
-                // Using modern fallback copy execution compatible with iframe environment
                 document.execCommand('copy');
                 showModal('تم النسخ بنجاح! 📋', 'تم نسخ نص الخطاب المحدد إلى حافظة جهازك. يمكنك لصقه مباشرة في طلب الدعم المالي بموقع كورسيرا.');
             } catch (err) {
