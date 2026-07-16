@@ -270,6 +270,58 @@
         .share-x   { background: #000; color: white; }
         .share-x:hover   { background: #333; }
 
+        /* ── Bookmark button ── */
+        .btn-bookmark {
+            background: none; border: none; cursor: pointer;
+            color: #94a3b8; font-size: 16px; padding: 4px;
+            transition: color .2s, transform .15s;
+            line-height: 1;
+        }
+        .btn-bookmark:hover { color: #f59e0b; transform: scale(1.2); }
+        .btn-bookmark.saved  { color: #f59e0b; }
+
+        /* Saved counter badge on nav */
+        .saved-count {
+            display: none;
+            background: #f59e0b; color: #fff;
+            font-size: 9px; font-weight: 900;
+            padding: 1px 5px; border-radius: 99px;
+            margin-right: 4px;
+        }
+        .saved-count.visible { display: inline-block; }
+
+        /* Level / Cost filter pills */
+        .sub-filter-btn {
+            padding: 5px 14px; border-radius: 99px;
+            font-size: 11px; font-weight: 700; border: 1.5px solid #e2e8f0;
+            background: #fff; color: #475569; cursor: pointer; transition: all .2s;
+            white-space: nowrap;
+        }
+        .sub-filter-btn:hover  { border-color: #6366f1; color: #6366f1; }
+        .sub-filter-btn.active { background: #6366f1; color: #fff; border-color: #6366f1; }
+        html.dark .sub-filter-btn { background: #1e293b; border-color: #334155; color: #94a3b8; }
+        html.dark .sub-filter-btn.active { background: #6366f1; color: #fff; border-color: #6366f1; }
+
+        /* Per-cert share strip */
+        .cert-share-strip {
+            display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap;
+        }
+        .cert-share-strip a {
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 4px 10px; border-radius: 8px;
+            font-size: 10px; font-weight: 700; text-decoration: none;
+            transition: opacity .15s;
+        }
+        .cert-share-strip a:hover { opacity: .85; }
+        .cert-share-wa { background:#25D366; color:#fff; }
+        .cert-share-x  { background:#000;    color:#fff; }
+
+        /* Favorites empty state */
+        #saved-empty {
+            text-align: center; padding: 60px 20px;
+            color: #94a3b8; font-size: 15px;
+        }
+
         /* هدف highlight badge */
         .hrdf-badge {
             display: inline-block;
@@ -327,6 +379,11 @@
             </button>
             <button onclick="switchSection('about')" id="nav-about" class="nav-tab px-5 py-2.5 rounded-xl font-bold text-sm text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2">
                 <i class="fas fa-info-circle text-indigo-500"></i> من نحن
+            </button>
+            <button onclick="switchSection('saved')" id="nav-saved" class="nav-tab px-5 py-2.5 rounded-xl font-bold text-sm text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2">
+                <i class="fas fa-bookmark text-amber-500"></i>
+                <span>محفوظاتي</span>
+                <span id="saved-badge" class="saved-count">0</span>
             </button>
             <!-- Dark Mode Toggle -->
             <button id="dark-toggle" onclick="toggleDark()" aria-label="تبديل الوضع الليلي" title="الوضع الليلي" class="mr-auto">
@@ -577,6 +634,21 @@
                 <button onclick="filterCerts('mgmt')" class="cert-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">إدارة الأعمال والمشاريع والجودة (34)</button>
                 <button onclick="filterCerts('service')" class="cert-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">السياحة والفندقة وخدمة العملاء والتقييم (7)</button>
                 <button onclick="filterCerts('health')" class="cert-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">التخصصات الصحية (30)</button>
+            </div>
+
+            <!-- Level & Cost sub-filters -->
+            <div class="flex flex-wrap gap-3 items-center border-t border-slate-100 pt-3">
+                <span class="text-xs text-slate-400 font-bold shrink-0">المستوى:</span>
+                <button onclick="setLevelFilter('all')"  id="lf-all"  class="sub-filter-btn active">الكل</button>
+                <button onclick="setLevelFilter('مبتدئ')" id="lf-beginner" class="sub-filter-btn">مبتدئ</button>
+                <button onclick="setLevelFilter('متوسط')" id="lf-intermediate" class="sub-filter-btn">متوسط</button>
+                <button onclick="setLevelFilter('احترافي')" id="lf-professional" class="sub-filter-btn">احترافي</button>
+                <span class="text-xs text-slate-300 mx-1">|</span>
+                <span class="text-xs text-slate-400 font-bold shrink-0">التكلفة:</span>
+                <button onclick="setCostFilter('all')"   id="cf-all"  class="sub-filter-btn active">الكل</button>
+                <button onclick="setCostFilter('low')"   id="cf-low"  class="sub-filter-btn">أقل من 500 ﷼</button>
+                <button onclick="setCostFilter('mid')"   id="cf-mid"  class="sub-filter-btn">500 – 1000 ﷼</button>
+                <button onclick="setCostFilter('high')"  id="cf-high" class="sub-filter-btn">أكثر من 1000 ﷼</button>
             </div>
 
             <p id="certs-count" class="text-xs text-slate-400 font-bold"></p>
@@ -8299,6 +8371,25 @@
             </div>
         </section>
 
+        <!-- SECTION 7: SAVED (محفوظاتي) -->
+        <section id="sec-saved" class="section-content hidden space-y-8 animate-fade-in">
+            <div class="border-b border-slate-200 pb-4 flex items-center justify-between flex-wrap gap-4">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-800"><i class="fas fa-bookmark text-amber-500 ml-2"></i>محفوظاتي</h2>
+                    <p class="text-slate-500 text-sm mt-1">الشهادات التي حفظتها — تبقى محفوظة حتى بعد إغلاق المتصفح.</p>
+                </div>
+                <button onclick="clearAllFavorites()" class="text-xs text-red-400 hover:text-red-600 font-bold transition-all border border-red-200 hover:border-red-400 px-3 py-1.5 rounded-xl">
+                    <i class="fas fa-trash-alt ml-1"></i> مسح الكل
+                </button>
+            </div>
+            <div id="saved-empty" class="hidden">
+                <i class="fas fa-bookmark text-slate-200 text-5xl mb-4 block"></i>
+                <p>لا توجد شهادات محفوظة بعد.</p>
+                <p class="text-sm mt-1">اضغط على <i class="fas fa-bookmark text-amber-400"></i> على أي شهادة لحفظها هنا.</p>
+            </div>
+            <div id="saved-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
+
         <!-- SECTION 6: ABOUT (من نحن) -->
         <section id="sec-about" class="section-content hidden space-y-8 animate-fade-in">
             <div class="border-b border-slate-200 pb-4">
@@ -8431,6 +8522,7 @@
             hrdf:    'دليل تعويض هدف | علم ينفع',
             google:  'شهادات جوجل المجانية | علم ينفع',
             about:   'من نحن | علم ينفع',
+            saved:   'محفوظاتي | علم ينفع',
         };
 
         // ── Main Tab Switcher ───────────────────────────────────────────────────
@@ -8448,17 +8540,17 @@
 
         // ── Hash routing on load ────────────────────────────────────────────────
         document.addEventListener('DOMContentLoaded', function() {
-            const hash = location.hash.replace('#', '');
-            const valid = ['welcome','excel','certs','hrdf','google','about'];
-            if (hash && valid.includes(hash)) {
-                switchSection(hash);
-            } else {
-                document.title = SECTION_TITLES.welcome;
-            }
+            initCertCards();       // augment all cards: data attrs + bookmark + share
+            generateSchema();      // Schema.org JSON-LD for all certs
             applyCertFilters();
+            renderFavorites();
             initDarkMode();
             initBackToTop();
             initTgPopup();
+            const hash = location.hash.replace('#', '');
+            const valid = ['welcome','excel','certs','hrdf','google','about','saved'];
+            if (hash && valid.includes(hash)) switchSection(hash);
+            else document.title = SECTION_TITLES.welcome;
         });
 
         // ── Excel levels switcher ───────────────────────────────────────────────
@@ -8519,8 +8611,10 @@
             return dp[m][n];
         }
 
-        // ── Certifications live filter (with fuzzy search + pagination) ─────────
+        // ── Certifications live filter (fuzzy search + category + level + cost + pagination) ──
         let currentCertCategory = 'all';
+        let currentLevelFilter  = 'all';
+        let currentCostFilter   = 'all';
         const CERTS_PAGE_SIZE = 24;
         let certsVisibleLimit = CERTS_PAGE_SIZE;
 
@@ -8539,42 +8633,199 @@
             document.getElementById('sec-certs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        function searchCerts() {
+        function setLevelFilter(level) {
+            currentLevelFilter = level;
             certsVisibleLimit = CERTS_PAGE_SIZE;
+            ['all','beginner','intermediate','professional'].forEach(id => {
+                document.getElementById(`lf-${id}`)?.classList.remove('active');
+            });
+            const idMap = { 'all':'all', 'مبتدئ':'beginner', 'متوسط':'intermediate', 'احترافي':'professional' };
+            document.getElementById(`lf-${idMap[level] || 'all'}`)?.classList.add('active');
             applyCertFilters();
         }
 
-        function loadMoreCerts() {
-            certsVisibleLimit += CERTS_PAGE_SIZE;
+        function setCostFilter(range) {
+            currentCostFilter = range;
+            certsVisibleLimit = CERTS_PAGE_SIZE;
+            ['all','low','mid','high'].forEach(id => {
+                document.getElementById(`cf-${id}`)?.classList.remove('active');
+            });
+            document.getElementById(`cf-${range}`)?.classList.add('active');
             applyCertFilters();
         }
+
+        function searchCerts() { certsVisibleLimit = CERTS_PAGE_SIZE; applyCertFilters(); }
+        function loadMoreCerts() { certsVisibleLimit += CERTS_PAGE_SIZE; applyCertFilters(); }
 
         function applyCertFilters() {
-            const searchBox = document.getElementById('cert-search');
-            const query = searchBox ? searchBox.value.trim().toLowerCase() : '';
-            const certs = document.querySelectorAll('.cert-card');
+            const query = (document.getElementById('cert-search')?.value || '').trim().toLowerCase();
+            const certs = document.querySelectorAll('#certs-grid .cert-card');
             const matched = [];
             certs.forEach(card => {
-                const matchesCategory = (currentCertCategory === 'all') ||
-                    (card.getAttribute('data-category') === currentCertCategory);
-                const cardText = card.innerText.toLowerCase();
-                const matchesSearch = fuzzyMatch(query, cardText);
-                if (matchesCategory && matchesSearch) {
-                    matched.push(card);
-                } else {
-                    card.classList.add('hidden');
+                const matchCat   = currentCertCategory === 'all' ||
+                    card.getAttribute('data-category') === currentCertCategory;
+                const matchLevel = currentLevelFilter === 'all' ||
+                    card.getAttribute('data-level') === currentLevelFilter;
+                const matchCost  = matchesCostFilter(card);
+                const matchSearch = fuzzyMatch(query, card.innerText.toLowerCase());
+                if (matchCat && matchLevel && matchCost && matchSearch) matched.push(card);
+                else card.classList.add('hidden');
+            });
+            matched.forEach((card, i) =>
+                i < certsVisibleLimit ? card.classList.remove('hidden') : card.classList.add('hidden'));
+            const visible = Math.min(matched.length, certsVisibleLimit);
+            const countEl = document.getElementById('certs-count');
+            if (countEl) countEl.textContent = `عرض ${visible} من ${matched.length} شهادة`;
+            document.getElementById('certs-empty')?.classList.toggle('hidden', matched.length !== 0);
+            document.getElementById('load-more-btn')?.classList.toggle('hidden', matched.length <= certsVisibleLimit);
+        }
+
+        function matchesCostFilter(card) {
+            if (currentCostFilter === 'all') return true;
+            const cost = parseInt(card.getAttribute('data-cost') || '0', 10);
+            if (currentCostFilter === 'low')  return cost < 500;
+            if (currentCostFilter === 'mid')  return cost >= 500 && cost <= 1000;
+            if (currentCostFilter === 'high') return cost > 1000;
+            return true;
+        }
+
+        // ── Init cert cards — parse data, add bookmark & share buttons ──────────
+        function initCertCards() {
+            const favorites = getFavorites();
+            document.querySelectorAll('#certs-grid .cert-card').forEach((card, idx) => {
+                // ① Extract level
+                const levelSpan = [...card.querySelectorAll('span')].find(s => s.textContent.includes('مستوى:'));
+                const levelText = levelSpan ? levelSpan.textContent.replace('مستوى:','').trim() : '';
+                card.setAttribute('data-level', levelText);
+
+                // ② Extract cost
+                const costText = card.innerText.match(/[\d,]+(?=\s*ريال)/);
+                const costVal  = costText ? parseInt(costText[0].replace(/,/g,''), 10) : 0;
+                card.setAttribute('data-cost', costVal);
+
+                // ③ Unique ID
+                const name = card.querySelector('h3')?.textContent.trim() || `cert-${idx}`;
+                const certId = btoa(encodeURIComponent(name)).slice(0, 20);
+                card.setAttribute('data-cert-id', certId);
+
+                // ④ Bookmark button — injected into the top-right area
+                const topRow = card.querySelector('.flex.justify-between.items-start');
+                if (topRow && !topRow.querySelector('.btn-bookmark')) {
+                    const btn = document.createElement('button');
+                    btn.className = 'btn-bookmark' + (favorites.has(certId) ? ' saved' : '');
+                    btn.title = 'احفظ الشهادة';
+                    btn.setAttribute('aria-label', 'احفظ');
+                    btn.innerHTML = '<i class="fas fa-bookmark"></i>';
+                    btn.onclick = (e) => { e.stopPropagation(); toggleFavorite(certId, btn, card, name, costVal); };
+                    topRow.appendChild(btn);
+                }
+
+                // ⑤ Per-cert share buttons
+                const footer = card.querySelector('.bg-slate-50, [class*="bg-slate-50"]');
+                if (footer && !footer.querySelector('.cert-share-strip')) {
+                    const shareText = `💼 شهادة "${name}" — تكلفتها ~${costVal} ريال وقابلة للاسترداد من هدف! 🎓\nhttps://mexsat2-rgb.github.io/itqan/#certs`;
+                    const strip = document.createElement('div');
+                    strip.className = 'cert-share-strip';
+                    strip.innerHTML = `
+                        <a href="https://wa.me/?text=${encodeURIComponent(shareText)}" target="_blank" rel="noopener" class="cert-share-wa"><i class="fab fa-whatsapp"></i> واتساب</a>
+                        <a href="https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}" target="_blank" rel="noopener" class="cert-share-x"><i class="fab fa-x-twitter"></i> X</a>`;
+                    footer.appendChild(strip);
                 }
             });
-            matched.forEach((card, i) => {
-                i < certsVisibleLimit ? card.classList.remove('hidden') : card.classList.add('hidden');
+        }
+
+        // ── Favorites (localStorage) ────────────────────────────────────────────
+        function getFavorites() {
+            try { return new Set(JSON.parse(localStorage.getItem('itqan-favs') || '[]')); }
+            catch { return new Set(); }
+        }
+        function saveFavorites(set) {
+            localStorage.setItem('itqan-favs', JSON.stringify([...set]));
+        }
+
+        function toggleFavorite(certId, btn, card, name, cost) {
+            const favs = getFavorites();
+            if (favs.has(certId)) { favs.delete(certId); btn.classList.remove('saved'); }
+            else                  { favs.add(certId);    btn.classList.add('saved'); }
+            saveFavorites(favs);
+            updateSavedBadge(favs.size);
+            renderFavorites();
+        }
+
+        function updateSavedBadge(count) {
+            const badge = document.getElementById('saved-badge');
+            if (!badge) return;
+            badge.textContent = count;
+            badge.classList.toggle('visible', count > 0);
+        }
+
+        function renderFavorites() {
+            const favs = getFavorites();
+            updateSavedBadge(favs.size);
+            const grid  = document.getElementById('saved-grid');
+            const empty = document.getElementById('saved-empty');
+            if (!grid) return;
+            grid.innerHTML = '';
+            if (favs.size === 0) {
+                empty?.classList.remove('hidden');
+                return;
+            }
+            empty?.classList.add('hidden');
+            document.querySelectorAll('#certs-grid .cert-card').forEach(card => {
+                if (favs.has(card.getAttribute('data-cert-id'))) {
+                    const clone = card.cloneNode(true);
+                    // Re-wire the bookmark button on the clone
+                    const cid = card.getAttribute('data-cert-id');
+                    const btn = clone.querySelector('.btn-bookmark');
+                    if (btn) {
+                        btn.classList.add('saved');
+                        btn.onclick = (e) => {
+                            e.stopPropagation();
+                            toggleFavorite(cid, btn, clone,
+                                card.querySelector('h3')?.textContent.trim() || '',
+                                parseInt(card.getAttribute('data-cost') || '0', 10));
+                            renderFavorites();
+                        };
+                    }
+                    clone.classList.remove('hidden');
+                    grid.appendChild(clone);
+                }
             });
-            const visibleCount = Math.min(matched.length, certsVisibleLimit);
-            const countEl = document.getElementById('certs-count');
-            if (countEl) countEl.textContent = `عرض ${visibleCount} من ${matched.length} شهادة`;
-            const emptyEl = document.getElementById('certs-empty');
-            if (emptyEl) emptyEl.classList.toggle('hidden', matched.length !== 0);
-            const loadMoreBtn = document.getElementById('load-more-btn');
-            if (loadMoreBtn) loadMoreBtn.classList.toggle('hidden', matched.length <= certsVisibleLimit);
+        }
+
+        function clearAllFavorites() {
+            saveFavorites(new Set());
+            // Reset all bookmark buttons in the main grid
+            document.querySelectorAll('#certs-grid .btn-bookmark').forEach(b => b.classList.remove('saved'));
+            renderFavorites();
+        }
+
+        // ── Schema.org Course JSON-LD ────────────────────────────────────────────
+        function generateSchema() {
+            const courses = [];
+            document.querySelectorAll('#certs-grid .cert-card').forEach(card => {
+                const name = card.querySelector('h3')?.textContent.trim();
+                const desc = card.querySelector('p')?.textContent.trim();
+                const cat  = card.querySelector('span')?.textContent.trim();
+                if (!name) return;
+                courses.push({
+                    '@type': 'Course',
+                    name,
+                    description: desc || '',
+                    provider: { '@type': 'Organization', name: cat || 'جهة معتمدة' },
+                    inLanguage: 'ar',
+                    url: 'https://mexsat2-rgb.github.io/itqan/#certs'
+                });
+            });
+            const ld = {
+                '@context': 'https://schema.org',
+                '@graph': courses
+            };
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.id   = 'schema-courses';
+            script.text = JSON.stringify(ld);
+            document.head.appendChild(script);
         }
 
         // ── Dark Mode ───────────────────────────────────────────────────────────
