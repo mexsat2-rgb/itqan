@@ -302,19 +302,6 @@
         html.dark .sub-filter-btn { background: #1e293b; border-color: #334155; color: #94a3b8; }
         html.dark .sub-filter-btn.active { background: #6366f1; color: #fff; border-color: #6366f1; }
 
-        /* Per-cert share strip */
-        .cert-share-strip {
-            display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap;
-        }
-        .cert-share-strip a {
-            display: inline-flex; align-items: center; gap: 4px;
-            padding: 4px 10px; border-radius: 8px;
-            font-size: 10px; font-weight: 700; text-decoration: none;
-            transition: opacity .15s;
-        }
-        .cert-share-strip a:hover { opacity: .85; }
-        .cert-share-wa { background:#25D366; color:#fff; }
-        .cert-share-x  { background:#000;    color:#fff; }
 
         /* Favorites empty state */
         #saved-empty {
@@ -8720,17 +8707,6 @@
                     topRow.appendChild(btn);
                 }
 
-                // ⑤ Per-cert share buttons
-                const footer = card.querySelector('.bg-slate-50, [class*="bg-slate-50"]');
-                if (footer && !footer.querySelector('.cert-share-strip')) {
-                    const shareText = `💼 شهادة "${name}" — تكلفتها ~${costVal} ريال وقابلة للاسترداد من هدف! 🎓\nhttps://mexsat2-rgb.github.io/itqan/#certs`;
-                    const strip = document.createElement('div');
-                    strip.className = 'cert-share-strip';
-                    strip.innerHTML = `
-                        <a href="https://wa.me/?text=${encodeURIComponent(shareText)}" target="_blank" rel="noopener" class="cert-share-wa"><i class="fab fa-whatsapp"></i> واتساب</a>
-                        <a href="https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}" target="_blank" rel="noopener" class="cert-share-x"><i class="fab fa-x-twitter"></i> X</a>`;
-                    footer.appendChild(strip);
-                }
             });
         }
 
